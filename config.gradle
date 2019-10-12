@@ -11,7 +11,7 @@ ext {
             applicationId           : "com.lize.wanandroid",        //应用ID
             versionCode             : 1,                    //版本号
             versionName             : "1.0.0",              //版本名称
-            serverVersion           : "",                   //版本类型
+            serverVersion           : "-d",                   //版本类型
             compileSdkVersion       : 28,                 //编译SDK版本
             minSdkVersion           : 21,                 //最小支持的SDK
             targetSdkVersion        : 28,                  // 目标版本sdk

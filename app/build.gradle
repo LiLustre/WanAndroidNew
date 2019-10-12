@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+    defaultConfig {
+        applicationId rootProject.ext.versions.applicationId
+        minSdkVersion rootProject.ext.versions.minSdkVersion
+        targetSdkVersion rootProject.ext.versions.targetSdkVersion
+        versionCode rootProject.ext.versions.versionCode
+        versionName rootProject.ext.versions.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled = rootProject.ext.dataBindingEnable
+    }
+    buildTypes {
+        buildTypes {
+            release {
+                minifyEnabled rootProject.ext.isMinifyEnabled
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+            debug {
+                minifyEnabled rootProject.ext.isMinifyEnabled
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.dependencies["appcompat_v7"]
+    implementation rootProject.ext.dependencies["cardview_v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["glide"]
+    implementation rootProject.ext.dependencies["retrofitSdk"]
+    implementation rootProject.ext.dependencies["retrofitConverterGson"]
+    implementation rootProject.ext.dependencies["okhttpLogInerceptor"]
+
+
+}
