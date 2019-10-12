@@ -1,0 +1,48 @@
+/**
+ * 在主项目的根目录下创建config.gradle文件
+ * 在这里单独处理统一依赖问题
+ * 注意需要在根目录的build.gradle中进行引入
+ */
+ext {
+
+    isMinifyEnabled = false
+    dataBindingEnable = true
+    versions = [
+            applicationId           : "com.lize.wanandroid",        //应用ID
+            versionCode             : 1,                    //版本号
+            versionName             : "1.0.0",              //版本名称
+            serverVersion           : "",                   //版本类型
+            compileSdkVersion       : 28,                 //编译SDK版本
+            minSdkVersion           : 21,                 //最小支持的SDK
+            targetSdkVersion        : 28,                  // 目标版本sdk
+            androidSupportSdkVersion: "27.1.1",              //support 版本号
+            glideVirsion            : "3.6.1",
+            retrofitViersion        : "2.6.1",
+            okhttpVersion           : "3.12.0",
+
+    ]
+
+
+    dependencies = [
+
+            appcompat_v7         : "com.android.support:appcompat-v7:${versions["androidSupportSdkVersion"]}",
+            cardview_v7          : "com.android.support:cardview-v7:${versions["androidSupportSdkVersion"]}",
+            design               : "com.android.support:design:${versions["androidSupportSdkVersion"]}",
+            //glide依赖
+            glide                : "com.github.bumptech.glide:glide:${versions["glideVirsion"]}",
+            // retrofit 2
+            retrofitSdk          : "com.squareup.retrofit2:retrofit:${versions["retrofitSdkViersion"]}",
+            //解析Gson
+            retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${versions["retrofitViersion"]}",
+            //日志拦截器
+            okhttpLogInerceptor  : "com.squareup.okhttp3:logging-interceptor:${versions["okhttpVersion"]}",
+
+    ]
+
+}
+if ("".equals(rootProject.ext.versions.serverVersion)) {
+    rootProject.ext.isMinifyEnabled = true;
+} else {
+    rootProject.ext.isMinifyEnabled = false;
+}
+
