@@ -4,13 +4,13 @@ package com.lize.wanandroid.util.statusbar;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
+import android.support.annotation.ColorInt;
+import android.support.v4.graphics.ColorUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import androidx.annotation.ColorInt;
-import androidx.core.graphics.ColorUtils;
 
 /**
  * 设置状态栏颜色
