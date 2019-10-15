@@ -1,4 +1,4 @@
-package com.lize.wanandroid.ui;
+package com.lize.wanandroid.ui.activity;
 
 
 import android.os.Bundle;

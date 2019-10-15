@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 
 
 import com.lize.wanandroid.R;
-import com.lize.wanandroid.ui.MainActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
