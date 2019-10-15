@@ -12,7 +12,7 @@ import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivityMainBinding;
 import com.lize.wanandroid.ui.fragment.ClassifyFragment;
-import com.lize.wanandroid.ui.fragment.IndexFragment;
+import com.lize.wanandroid.ui.fragment.index.IndexFragment;
 import com.lize.wanandroid.ui.fragment.MeFragment;
 import com.lize.wanandroid.ui.fragment.PiazzaFragment;
 import com.lize.wanandroid.ui.helper.BottomNavigationViewHelper;
@@ -103,6 +103,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 break;
             case R.id.menu_item_me:
                 if (meFragment == null) {
+
                     meFragment = MeFragment.getInstance();
                     ft.add(R.id.content_fl, meFragment, IndexFragment.class.getName());
                 } else {

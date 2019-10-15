@@ -17,6 +17,7 @@ public class MeFragment extends BaseFragment {
         return instance;
     }
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_me;

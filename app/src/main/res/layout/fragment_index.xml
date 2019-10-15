@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <TextView
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Themecolor"
+            >
+            <RelativeLayout
+                android:id="@+id/toolBar"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                >
+                <LinearLayout
+                    android:id="@+id/search_bar_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/index_search_bar_bg"
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:layout_toLeftOf="@id/wait_do_ib"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="搜索关键字以空格隔开"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/normal_search_bar_hint_text_color"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="14dp"
+                        android:gravity="center_vertical"
+                        android:drawableLeft="@drawable/index_search_bar_icon"
+                        />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/wait_do_ib"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                  android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+
+                    android:src="@drawable/index_wait_to_do_icon"
+                    android:background="@null"
+                    />
+            </RelativeLayout>
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tl_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabTextColor="@color/Themecolor_200"
+                app:tabSelectedTextColor="@color/white"
+                app:tabMode="scrollable"
+                app:tabGravity="center"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                app:tabIndicatorColor="@android:color/white"
+                >
+            </android.support.design.widget.TabLayout>
+        </android.support.design.widget.AppBarLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="首页"
-            />
-    </LinearLayout>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+
+        </android.support.v4.view.ViewPager>
+    </android.support.design.widget.CoordinatorLayout>
 </layout>

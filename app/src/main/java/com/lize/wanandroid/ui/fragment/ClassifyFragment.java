@@ -16,6 +16,8 @@ public class ClassifyFragment extends BaseFragment {
         return instance;
     }
 
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_classify;
