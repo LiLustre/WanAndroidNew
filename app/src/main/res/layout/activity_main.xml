@@ -8,19 +8,21 @@
         tools:context=".ui.MainActivity">
 
         <FrameLayout
+            android:id="@+id/content_fl"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_above="@id/bnv_bar"
+            >
 
         </FrameLayout>
-
-    <!--    <android.support.design.widget.BottomNavigationView
+        <android.support.design.widget.BottomNavigationView
             android:id="@+id/bnv_bar"
             style="@style/Widget.Design.BottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:itemIconTint="@color/selector_bottom_item_color"
-            app:itemTextColor="@color/selector_bottom_item_color"
-            app:menu="@menu/nav_menu"/>-->
+            app:itemIconTint="@drawable/mian_bottom_tab_selector"
+            app:itemTextColor="@drawable/mian_bottom_tab_selector"
+            app:menu="@menu/main_bottom_tab_menu"/>
     </RelativeLayout>
 </layout>

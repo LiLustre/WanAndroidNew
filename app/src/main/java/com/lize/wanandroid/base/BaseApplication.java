@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.base.checker.ApplicationChecker;
 
 import java.util.ArrayList;

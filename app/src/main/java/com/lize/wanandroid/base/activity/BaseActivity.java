@@ -1,4 +1,4 @@
-package com.lize.wanandroid.base;
+package com.lize.wanandroid.base.activity;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 
 import com.lize.wanandroid.R;
+import com.lize.wanandroid.base.BaseApplication;
 import com.lize.wanandroid.util.statusbar.StatusBarCompat;
 
 /**
@@ -22,16 +23,16 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.status_bar_color));
-        init();
+        init(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, getLayoutId());
-        initView();
+        initView(savedInstanceState);
     }
 
-    public void init() {
+    public void init(@Nullable Bundle savedInstanceState) {
 
     }
 
-    protected abstract void initView();
+    protected abstract void initView(@Nullable Bundle savedInstanceState);
 
 
     public abstract int getLayoutId();
