@@ -31,6 +31,6 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
 
     @Override
     protected void onFragmentFirstVisible() {
-
+        bindind.setLifecycleOwner(this);
     }
 }

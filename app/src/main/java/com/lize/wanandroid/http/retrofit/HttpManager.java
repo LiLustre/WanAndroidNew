@@ -1,8 +1,9 @@
-package com.lize.wanandroid.http;
+package com.lize.wanandroid.http.retrofit;
 
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lize.wanandroid.http.retrofit.factory.BaseCallAdapterFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +48,7 @@ public class HttpManager {
                 .client(HttpConfig.getNormalHttpClient())
                 .baseUrl(baseUrl)
                 .addConverterFactory(getGsonConverterFactory())
+                .addCallAdapterFactory(BaseCallAdapterFactory.create())
                 .build();
 
         retrofitMap.put(baseUrl, retrofit);

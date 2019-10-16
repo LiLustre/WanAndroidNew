@@ -1,4 +1,4 @@
-package com.lize.wanandroid.http;
+package com.lize.wanandroid.http.retrofit;
 
 import com.lize.wanandroid.util.LogUtils;
 

@@ -16,7 +16,6 @@ import com.lize.wanandroid.R;
 public class CommonLoadMoreFooterView extends RelativeLayout implements LoadMoreFooterView {
     private LinearLayout loadingMoreView;
     private LinearLayout loadMoreErrorView;
-
     public CommonLoadMoreFooterView(Context context) {
         this(context, null);
     }

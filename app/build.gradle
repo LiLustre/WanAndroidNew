@@ -3,16 +3,18 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion rootProject.ext.versions.compileSdkVersion
     defaultConfig {
-        applicationId rootProject.ext.versions.applicationId
         minSdkVersion rootProject.ext.versions.minSdkVersion
         targetSdkVersion rootProject.ext.versions.targetSdkVersion
         versionCode rootProject.ext.versions.versionCode
         versionName rootProject.ext.versions.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
+
     dataBinding {
         enabled = rootProject.ext.dataBindingEnable
     }
+
     buildTypes {
         buildTypes {
             release {
@@ -25,6 +27,26 @@ android {
             }
         }
     }
+
+ /*   flavorDimensions 'default'
+    productFlavors {
+        JoinTest {
+            dimension 'default'
+            applicationId rootProject.ext.versions.applicationId
+            versionName rootProject.ext.versions.versionName
+            versionCode rootProject.ext.versions.versionCode
+
+//            manifestPlaceholders = [appName: versions.appNameTest, qqappid: "1105704078"]
+        }
+
+        Dev {
+            dimension 'default'
+            applicationId rootProject.ext.versions.applicationId
+            versionName rootProject.ext.versions.versionName
+            versionCode rootProject.ext.versions.versionCode
+
+        }
+    }*/
 }
 
 dependencies {
