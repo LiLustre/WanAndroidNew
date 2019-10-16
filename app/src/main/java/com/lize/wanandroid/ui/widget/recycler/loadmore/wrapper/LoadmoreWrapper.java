@@ -1,11 +1,14 @@
 package com.lize.wanandroid.ui.widget.recycler.loadmore.wrapper;
 
+import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.lize.wanandroid.ui.widget.recycler.loadmore.footer.CommonLoadMoreFooterView;
+import com.lize.wanandroid.ui.widget.recycler.loadmore.footer.LoadMoreFooterView;
 
 
 /**
@@ -16,16 +19,21 @@ public class LoadmoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public static final int ITEM_TYPE_LOAD_MORE = Integer.MAX_VALUE - 2;
 
     private RecyclerView.Adapter mInnerAdapter;
-    private View mLoadMoreView;
-    private int mLoadMoreLayoutId;
+    private LoadMoreFooterView mLoadMoreView;
+    private Context context;
+
     private OnLoadMoreListener mOnLoadMoreListener;
 
-    public LoadmoreWrapper(RecyclerView.Adapter adapter) {
+    public LoadmoreWrapper(RecyclerView.Adapter adapter, Context context) {
         mInnerAdapter = adapter;
+        this.context = context;
+        mLoadMoreView = new CommonLoadMoreFooterView(context);
+
     }
 
+
     private boolean hasLoadMore() {
-        return mLoadMoreView != null || mLoadMoreLayoutId != 0;
+        return mLoadMoreView != null;
     }
 
     private boolean isShowLoadMore(int position) {
@@ -43,12 +51,9 @@ public class LoadmoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ITEM_TYPE_LOAD_MORE) {
-            RecyclerView.ViewHolder holder;
+            RecyclerView.ViewHolder holder = null;
             if (mLoadMoreView != null) {
-                holder = new ViewHolder(mLoadMoreView);
-            } else {
-                holder = new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(mLoadMoreLayoutId, parent,
-                        false));
+                holder = new ViewHolder(mLoadMoreView.getView());
             }
             return holder;
         }
@@ -58,6 +63,7 @@ public class LoadmoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (isShowLoadMore(position)) {
+            loadingMore();
             if (mOnLoadMoreListener != null) {
                 mOnLoadMoreListener.onLoadMoreRequested();
             }
@@ -116,15 +122,29 @@ public class LoadmoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return this;
     }
 
-    public LoadmoreWrapper setLoadMoreView(View loadMoreView) {
+    public void loadingMore() {
+        if (mLoadMoreView != null) {
+            mLoadMoreView.onLoadingMore();
+        }
+    }
+
+    public void loadMoreError() {
+        if (mLoadMoreView != null) {
+            mLoadMoreView.onLoadedError();
+        }
+    }
+
+    public void loadNoMore() {
+        if (mLoadMoreView != null) {
+            mLoadMoreView.onLoadNoMore();
+        }
+    }
+
+    public LoadmoreWrapper setLoadMoreView(LoadMoreFooterView loadMoreView) {
         mLoadMoreView = loadMoreView;
         return this;
     }
 
-    public LoadmoreWrapper setLoadMoreView(int layoutId) {
-        mLoadMoreLayoutId = layoutId;
-        return this;
-    }
 
     public interface OnLoadMoreListener {
         void onLoadMoreRequested();
