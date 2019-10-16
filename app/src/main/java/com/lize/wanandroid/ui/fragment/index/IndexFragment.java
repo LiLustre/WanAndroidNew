@@ -1,10 +1,12 @@
 package com.lize.wanandroid.ui.fragment.index;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.BaseFragment;

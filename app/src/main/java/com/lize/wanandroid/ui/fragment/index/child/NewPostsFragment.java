@@ -1,9 +1,13 @@
 package com.lize.wanandroid.ui.fragment.index.child;
 
+
+
+import androidx.lifecycle.ViewModelProvider;
+
 import com.lize.wanandroid.R;
-import com.lize.wanandroid.base.fragment.BaseFragment;
 import com.lize.wanandroid.base.fragment.LazyBaseFragment;
 import com.lize.wanandroid.databinding.FragmentNewPostsBinding;
+import com.lize.wanandroid.viewmodel.NewPostsViewModel;
 
 /**
  * @author Lize
@@ -11,8 +15,9 @@ import com.lize.wanandroid.databinding.FragmentNewPostsBinding;
  */
 public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> {
     private static NewPostsFragment instance = null;
-    public static NewPostsFragment getInstance(){
-        if (instance==null){
+
+    public static NewPostsFragment getInstance() {
+        if (instance == null) {
             instance = new NewPostsFragment();
         }
         return instance;
@@ -32,5 +37,6 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
     @Override
     protected void onFragmentFirstVisible() {
         bindind.setLifecycleOwner(this);
+        ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(NewPostsViewModel.class);
     }
 }

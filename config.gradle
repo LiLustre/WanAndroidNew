@@ -15,9 +15,12 @@ ext {
             compileSdkVersion       : 28,                 //编译SDK版本
             minSdkVersion           : 21,                 //最小支持的SDK
             targetSdkVersion        : 28,                  // 目标版本sdk
-            androidSupportSdkVersion: "27.1.1",              //support 版本号
+            androidSupportSdkVersion: "28.0.0",              //support 版本号
+            androidxVersion         : "1.1.0",              //
+            coordinatorlayoutVersion: "1.1.0-beta01",              //
+            supportMaterialVersion: "1.1.0-beta01",              //
             glideVirsion            : "3.6.1",
-            retrofitViersion        : "2.6.1",
+            retrofitSdkViersion        : "2.6.1",
             okhttpVersion           : "3.12.0",
 
     ]
@@ -28,16 +31,15 @@ ext {
 
 
     dependencies = [
-
-            appcompat_v7         : "com.android.support:appcompat-v7:${versions["androidSupportSdkVersion"]}",
-            cardview_v7          : "com.android.support:cardview-v7:${versions["androidSupportSdkVersion"]}",
-            design               : "com.android.support:design:${versions["androidSupportSdkVersion"]}",
+            androidx             :"androidx.appcompat:appcompat:${versions["androidxVersion"]}",
+            coordinatorlayout    :"androidx.coordinatorlayout:coordinatorlayout:${versions["coordinatorlayoutVersion"]}",
+            supportMaterial        :"com.google.android.material:material:${versions["supportMaterialVersion"]}",
             //glide依赖
             glide                : "com.github.bumptech.glide:glide:${versions["glideVirsion"]}",
             // retrofit 2
             retrofitSdk          : "com.squareup.retrofit2:retrofit:${versions["retrofitSdkViersion"]}",
             //解析Gson
-            retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${versions["retrofitViersion"]}",
+            retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${versions["retrofitSdkViersion"]}",
             //日志拦截器
             okhttpLogInerceptor  : "com.squareup.okhttp3:logging-interceptor:${versions["okhttpVersion"]}",
 

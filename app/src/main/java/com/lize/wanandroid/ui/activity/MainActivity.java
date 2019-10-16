@@ -2,12 +2,14 @@ package com.lize.wanandroid.ui.activity;
 
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentTransaction;
+
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivityMainBinding;

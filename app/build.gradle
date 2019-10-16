@@ -65,15 +65,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.ext.dependencies["appcompat_v7"]
-    implementation rootProject.ext.dependencies["cardview_v7"]
-    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["androidx"]
+    implementation rootProject.ext.dependencies["coordinatorlayout"]
+    implementation rootProject.ext.dependencies["supportMaterial"]
     implementation rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["retrofitSdk"]
     implementation rootProject.ext.dependencies["retrofitConverterGson"]
     implementation rootProject.ext.dependencies["okhttpLogInerceptor"]
+    implementation 'com.google.android.material:material:1.1.0-beta01'
 
 
-/*    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'*/
 }

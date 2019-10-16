@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <android.support.design.widget.AppBarLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/Themecolor"
@@ -50,7 +51,7 @@
                     android:background="@null"
                     />
             </RelativeLayout>
-            <android.support.design.widget.TabLayout
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tl_tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,15 +62,16 @@
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
                 app:tabIndicatorColor="@android:color/white"
                 >
-            </android.support.design.widget.TabLayout>
-        </android.support.design.widget.AppBarLayout>
-        <android.support.v4.view.ViewPager
+            </com.google.android.material.tabs.TabLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             >
 
-        </android.support.v4.view.ViewPager>
-    </android.support.design.widget.CoordinatorLayout>
+        </androidx.viewpager.widget.ViewPager>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

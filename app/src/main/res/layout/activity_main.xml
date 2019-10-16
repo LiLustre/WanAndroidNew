@@ -15,7 +15,7 @@
             >
 
         </FrameLayout>
-        <android.support.design.widget.BottomNavigationView
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnv_bar"
             style="@style/Widget.Design.BottomNavigationView"
             android:layout_width="match_parent"
