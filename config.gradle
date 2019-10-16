@@ -22,6 +22,10 @@ ext {
 
     ]
 
+    urls = [
+          serverUrl:"https://www.wanandroid.com/"
+    ]
+
 
     dependencies = [
 

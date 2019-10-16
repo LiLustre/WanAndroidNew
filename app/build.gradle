@@ -8,9 +8,19 @@ android {
         versionCode rootProject.ext.versions.versionCode
         versionName rootProject.ext.versions.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        buildConfigField("String","SERVER_URL","\""+rootProject.ext.urls.serverUrl+"\"")
     }
+    signingConfigs {
+        debug {
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+        }
+        release {
 
+        }
+    }
     dataBinding {
         enabled = rootProject.ext.dataBindingEnable
     }
@@ -28,25 +38,29 @@ android {
         }
     }
 
- /*   flavorDimensions 'default'
+    flavorDimensions 'default'
     productFlavors {
-        JoinTest {
-            dimension 'default'
-            applicationId rootProject.ext.versions.applicationId
-            versionName rootProject.ext.versions.versionName
-            versionCode rootProject.ext.versions.versionCode
-
-//            manifestPlaceholders = [appName: versions.appNameTest, qqappid: "1105704078"]
-        }
-
         Dev {
             dimension 'default'
             applicationId rootProject.ext.versions.applicationId
             versionName rootProject.ext.versions.versionName
             versionCode rootProject.ext.versions.versionCode
-
+//            manifestPlaceholders = [appName: versions.appNameTest, qqappid: "1105704078"]
         }
-    }*/
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def apkPrefix = "wanandroid";
+            def fileName
+            if (variant.buildType.name == "release") {
+                // 输出apk名称为pre_versionname_channalname.apk
+                fileName = apkPrefix + "_${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+            } else {
+                fileName = apkPrefix + "_${defaultConfig.versionName}_debug.apk"
+            }
+            outputFileName = fileName
+        }
+    }
 }
 
 dependencies {
