@@ -45,7 +45,7 @@ public class NewPostsViewModel extends IBaseViewModel {
                         articleListLDValue = new ArrayList<>();
                     }
                     articleListLDValue.addAll(articleBeans);
-                    articleListLD.setValue(articleBeans);
+                    articleListLD.setValue(articleListLDValue);
                     NewPostsViewModel.this.pageCount = pageCount;
                     if (pageCount > curPage) {
                         curPage++;
