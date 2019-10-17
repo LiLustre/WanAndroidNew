@@ -5,6 +5,8 @@ import com.lize.wanandroid.http.WanAndroidRespone;
 import com.lize.wanandroid.http.retrofit.BaseCall;
 import com.lize.wanandroid.model.article.ArticleBean;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.GET;
@@ -18,6 +20,9 @@ public interface ArticleService {
 
     @GET("article/list/{page}/json")
     BaseCall<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> getNewPostsList(@Path("page") String page);
+
+    @GET("article/top/json")
+    BaseCall<WanAndroidRespone<List<ArticleBean>>> getTopPostsList();
 
 
 }

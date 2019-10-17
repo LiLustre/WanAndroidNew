@@ -6,6 +6,7 @@
     <data>
 
     </data>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,80 +17,94 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="vertical"
         app:cardBackgroundColor="@color/white">
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/top_iv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp">
+                android:src="@drawable/top_icon"
+                android:layout_alignParentLeft="true"
+                android:visibility="gone"
+                />
 
-                <com.lize.wanandroid.ui.widget.FlagTextView
-                    android:id="@+id/title_tv"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_toLeftOf="@id/article_img_iv"
-                    android:ellipsize="end"
+                    android:layout_marginLeft="10dp"
+                    android:paddingTop="10dp"
+                    >
+
+                    <com.lize.wanandroid.ui.widget.FlagTextView
+                        android:id="@+id/title_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_toLeftOf="@id/article_img_iv"
+                        android:ellipsize="end"
+                        android:gravity="top"
+                        android:maxLines="3"
+                        android:text="Android 核心知识进阶学习教程"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="16sp"
+                        app:flagLayout="@layout/flag"
+                        app:flagTVId="@id/tv_tag" />
+
+                    <com.lize.wanandroid.ui.widget.RoundImageView
+                        android:id="@+id/article_img_iv"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:scaleType="centerCrop" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:gravity="center_vertical"
-                    app:flagLayout="@layout/flag"
-                    app:flagTVId="@id/tv_tag"
-                    android:maxLines="3"
-                    android:text="Android 核心知识进阶学习教程"
-                    android:textColor="@color/common_text_color"
-                    android:textSize="16sp" />
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
 
-                <ImageView
-                    android:id="@+id/article_img_iv"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:scaleType="centerCrop" />
-            </RelativeLayout>
+                    <com.lize.wanandroid.ui.widget.FlagTextView
+                        android:id="@+id/classify_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/time_tv"
+                        android:gravity="top"
+                        android:text="项目"
+                        android:textColor="@color/gray"
+                        android:textSize="12dp"
+                        app:flagLayout="@layout/classify_tag"
+                        app:flagTVId="@id/tv_tag" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:paddingBottom="5dp">
+                    <TextView
+                        android:id="@+id/time_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="1小时"
+                        android:textColor="@color/gray"
+                        android:textSize="10dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
 
-                <com.lize.wanandroid.ui.widget.FlagTextView
-                    android:id="@+id/classify_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    app:flagLayout="@layout/classify_tag"
-                    app:flagTVId="@id/tv_tag"
-                    android:paddingLeft="4dp"
-                    android:paddingTop="2dp"
-                    android:paddingRight="4dp"
-                    android:paddingBottom="2dp"
-                    android:text="项目"
-                    android:visibility="visible"
-                    android:layout_marginRight="15dp"
-                    android:textColor="@color/gray"
-                    android:layout_centerVertical="true"
-                    android:textSize="10dp" />
-                />
-                <TextView
-                    android:id="@+id/time_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1小时"
-                    android:textSize="10dp"
-                    android:textColor="@color/gray"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true" />
-            </RelativeLayout>
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

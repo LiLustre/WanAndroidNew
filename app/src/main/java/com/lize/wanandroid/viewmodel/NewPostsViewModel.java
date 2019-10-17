@@ -37,34 +37,23 @@ public class NewPostsViewModel extends IBaseViewModel {
 
     public void getArticleList() {
         if (pageCount >= curPage) {
-
-            articleModel.getNewPostList(String.valueOf(curPage), new BaseCallback<WanAndroidRespone<WanAndroidPageData<ArticleBean>>>() {
+            articleModel.getIndexArticle(curPage, new ArticleModel.OnIndexArticltLoadListener() {
                 @Override
-                public void onSuccess(Call<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> call, Response<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> response) {
-                    if (response.body() != null && response.body().getErrorCode() == ErrorCode.ERROR_CODE_OK) {
-
-                        List<ArticleBean> articleBeans = articleListLD.getValue();
-                        if (articleBeans == null) {
-                            articleBeans = new ArrayList<>();
-                        }
-                        articleBeans.addAll(response.body().getData().getDatas());
-                        articleListLD.setValue(articleBeans);
-                        pageCount = response.body().getData().getPageCount();
-                        if (response.body().getData().getPageCount() > curPage) {
-                            curPage++;
-                        }
-                    } else {
-
+                public void onLoadSuccess(List<ArticleBean> articleBeans,int pageCount) {
+                    List<ArticleBean> articleListLDValue = articleListLD.getValue();
+                    if (articleListLDValue == null) {
+                        articleListLDValue = new ArrayList<>();
+                    }
+                    articleListLDValue.addAll(articleBeans);
+                    articleListLD.setValue(articleBeans);
+                    NewPostsViewModel.this.pageCount = pageCount;
+                    if (pageCount > curPage) {
+                        curPage++;
                     }
                 }
 
                 @Override
-                public void onError(Call<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> call, Throwable error) {
-
-                }
-
-                @Override
-                public void onFailed(Call<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> call, Response<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> response) {
+                public void onLoadError() {
 
                 }
             });

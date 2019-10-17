@@ -78,6 +78,7 @@ public class FlagTextView extends AppCompatTextView {
     }
 
     public void setContentAndTag(String content, List<String> tags) {
+
         content_buffer = new StringBuffer();
         for (String item : tags) {//将每个tag的内容添加到content后边，之后将用drawable替代这些tag所占的位置
             content_buffer.append(item);
@@ -99,8 +100,9 @@ public class FlagTextView extends AppCompatTextView {
             endIndex = startIndex + item.length();
             spannableString.setSpan(span, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
+        setGravity(Gravity.TOP);
+
         setText(spannableString);
-        setGravity(Gravity.CENTER_VERTICAL);
     }
 
     private int getLastLength(List<String> list, int maxLength) {

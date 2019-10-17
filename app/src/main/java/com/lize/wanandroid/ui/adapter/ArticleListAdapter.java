@@ -38,19 +38,31 @@ public class ArticleListAdapter extends DataBindingRecyclerAdapter {
         ArticleBean articleBean = articleBeans.get(position);
         List<String> flag = new ArrayList<>();
         if (articleBean.isTop()) {
-            flag.add("置顶");
+            dataBinding.topIv.setVisibility(View.VISIBLE);
+        }else {
+            dataBinding.topIv.setVisibility(View.GONE);
         }
         if (articleBean.isFresh()) {
-            flag.add("新");
+            flag.add("最近收录");
         }
-        dataBinding.titleTv.setContentAndTag(articleBean.getTitle(), flag);
+        if (ValueUtil.isListValid(flag)){
+            dataBinding.titleTv.setContentAndTag("  "+articleBean.getTitle(), flag);
+        }else {
+            dataBinding.titleTv.setText(articleBean.getTitle());
+        }
+
         List<String> tag = new ArrayList<>();
         if (ValueUtil.isListValid(articleBean.getTags())) {
             for (Tag tag1 : articleBean.getTags()) {
                 tag.add(tag1.getName());
             }
         }
-        dataBinding.classifyTv.setContentAndTag(articleBean.getSuperChapterName() + "/" + articleBean.getChapterName(), tag);
+        if (ValueUtil.isListValid(tag)){
+            dataBinding.classifyTv.setContentAndTag("  "+articleBean.getSuperChapterName() + " / " + articleBean.getChapterName(), tag);
+        }else {
+            dataBinding.classifyTv.setText(articleBean.getSuperChapterName() + " / " + articleBean.getChapterName());
+        }
+
         dataBinding.timeTv.setText(articleBean.getNiceDate());
         if (ValueUtil.isStringValid(articleBean.getEnvelopePic())) {
             Glide.with(binding.getRoot().getContext())
