@@ -1,19 +1,32 @@
 package com.lize.wanandroid.http.retrofit.factory;
 
+import android.os.Handler;
+import android.os.Looper;
+
+import androidx.annotation.Nullable;
+
 import com.lize.wanandroid.http.retrofit.BaseCall;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.concurrent.Executor;
+
 
 import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
 
+
+
 /**
- * Created by Lize on 2018/11/30
+ * created by lize on 2018/11/30
  */
 public class BaseCallAdapterFactory extends CallAdapter.Factory {
+    private final @Nullable Executor callbackExecutor;
 
+    public BaseCallAdapterFactory() {
+        this.callbackExecutor =defaultCallbackExecutor();
+    }
 
     public static BaseCallAdapterFactory create() {
         return new BaseCallAdapterFactory();
@@ -40,6 +53,17 @@ public class BaseCallAdapterFactory extends CallAdapter.Factory {
         }
         //获取 返回类型中 的泛型
          Type respooneType = getParameterUpperBound(0, (ParameterizedType) returnType);
-        return new BaseCallAdapter<>(respooneType);
+        return new BaseCallAdapter<>(respooneType,callbackExecutor);
+    }
+
+    public Executor defaultCallbackExecutor() {
+        return new MainThreadExecutor();
+    }
+    static class MainThreadExecutor implements Executor {
+        private final Handler handler = new Handler(Looper.getMainLooper());
+
+        @Override public void execute(Runnable r) {
+            handler.post(r);
+        }
     }
 }

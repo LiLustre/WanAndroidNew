@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivityMainBinding;
@@ -18,6 +19,8 @@ import com.lize.wanandroid.ui.fragment.index.IndexFragment;
 import com.lize.wanandroid.ui.fragment.MeFragment;
 import com.lize.wanandroid.ui.fragment.PiazzaFragment;
 import com.lize.wanandroid.ui.helper.BottomNavigationViewHelper;
+
+import static com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private static final String SELECT_ITEM = "bottomNavigationSelectItem";
@@ -54,7 +57,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     }
 
     private void initBottomTab() {
-        BottomNavigationViewHelper.disableShiftMode(binding.bnvBar);
+       // BottomNavigationViewHelper.disableShiftMode(binding.bnvBar);
+        binding.bnvBar.setLabelVisibilityMode(LABEL_VISIBILITY_LABELED);
         binding.bnvBar.setOnNavigationItemSelectedListener(new BottomNavigationView
                 .OnNavigationItemSelectedListener() {
             @Override

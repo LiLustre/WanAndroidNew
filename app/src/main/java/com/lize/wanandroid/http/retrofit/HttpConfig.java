@@ -29,7 +29,7 @@ public class HttpConfig {
                 }
             }
         });
-        loggInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);//设置拦截器等级，BODY表示针对请求响应都体拦截
+        loggInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);//设置拦截器等级，BODY表示针对请求响应都体拦截
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .readTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)

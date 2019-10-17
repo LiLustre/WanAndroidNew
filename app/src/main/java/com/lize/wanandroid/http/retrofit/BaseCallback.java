@@ -8,7 +8,7 @@ import retrofit2.Response;
 /**
  * Created by Lize on 2018/11/30
  */
-public abstract class BaseResponeCallBack<T> implements Callback<T> {
+public abstract class BaseCallback<T> implements Callback<T> {
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {

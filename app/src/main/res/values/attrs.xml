@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlagTextView">
+        <attr name="flagLayout" format="reference" />
+        <attr name="flagTVId" format="reference" />
+    </declare-styleable>
+</resources>

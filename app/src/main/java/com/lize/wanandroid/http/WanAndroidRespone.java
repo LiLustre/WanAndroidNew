@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * @author Lize
  * on 2019/10/16
  */
-public class ResponeData<T> {
+public class WanAndroidRespone<T> {
 
     @SerializedName("errorCode")
     private int errorCode;

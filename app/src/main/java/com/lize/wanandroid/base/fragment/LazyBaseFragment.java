@@ -1,27 +1,29 @@
 package com.lize.wanandroid.base.fragment;
 
 import android.os.Bundle;
-
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.ViewDataBinding;
 
 /**
  * @author Lize
  * on 2019/10/15
  * 懒加载 Fragment
  */
-public abstract class LazyBaseFragment<T> extends BaseFragment {
+public abstract class LazyBaseFragment<T extends ViewDataBinding> extends BaseFragment<T> {
 
     private boolean isFragmentVisible;
     private boolean isReuseView;
     private boolean isFirstVisible;
     private View rootView;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initVariable();
     }
+
     private void initVariable() {
         isFirstVisible = true;
         isFragmentVisible = false;
@@ -68,7 +70,7 @@ public abstract class LazyBaseFragment<T> extends BaseFragment {
             onFragmentVisibleChange(true);
             isFragmentVisible = true;
             return;
-        }else if (isFragmentVisible) {
+        } else if (isFragmentVisible) {
             isFragmentVisible = false;
             onFragmentVisibleChange(false);
         }
@@ -86,10 +88,11 @@ public abstract class LazyBaseFragment<T> extends BaseFragment {
         isReuseView = isReuse;
     }
 
-    public abstract void onFragmentVisibleChange(boolean isVisible) ;
+    public abstract void onFragmentVisibleChange(boolean isVisible);
 
 
     protected abstract void onFragmentFirstVisible();
+
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -1,0 +1,87 @@
+package com.lize.wanandroid.ui.adapter;
+
+import android.view.View;
+
+import androidx.databinding.ViewDataBinding;
+
+import com.bumptech.glide.Glide;
+import com.lize.wanandroid.R;
+import com.lize.wanandroid.databinding.ArticleRecylerItemBinding;
+import com.lize.wanandroid.model.article.ArticleBean;
+import com.lize.wanandroid.model.tag.Tag;
+import com.lize.wanandroid.ui.adapter.base.DataBindingRecyclerAdapter;
+import com.lize.wanandroid.util.ValueUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Lize
+ * on 2019/10/17
+ */
+public class ArticleListAdapter extends DataBindingRecyclerAdapter {
+
+    private List<ArticleBean> articleBeans;
+    private OnItemClickListener onItemClickListener;
+
+    public ArticleListAdapter(List<ArticleBean> articleBeans) {
+        this.articleBeans = articleBeans;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    @Override
+    protected void onBindView(ViewDataBinding binding, final int position, DataBindingRecyclerAdapter.VH holder) {
+        ArticleRecylerItemBinding dataBinding = (ArticleRecylerItemBinding) binding;
+        ArticleBean articleBean = articleBeans.get(position);
+        List<String> flag = new ArrayList<>();
+        if (articleBean.isTop()) {
+            flag.add("置顶");
+        }
+        if (articleBean.isFresh()) {
+            flag.add("新");
+        }
+        dataBinding.titleTv.setContentAndTag(articleBean.getTitle(), flag);
+        List<String> tag = new ArrayList<>();
+        if (ValueUtil.isListValid(articleBean.getTags())) {
+            for (Tag tag1 : articleBean.getTags()) {
+                tag.add(tag1.getName());
+            }
+        }
+        dataBinding.classifyTv.setContentAndTag(articleBean.getSuperChapterName() + "/" + articleBean.getChapterName(), tag);
+        dataBinding.timeTv.setText(articleBean.getNiceDate());
+        if (ValueUtil.isStringValid(articleBean.getEnvelopePic())) {
+            Glide.with(binding.getRoot().getContext())
+                    .load(articleBean.getEnvelopePic())
+                    .crossFade(500)
+                    .into(dataBinding.articleImgIv);
+        } else {
+            dataBinding.articleImgIv.setVisibility(View.GONE);
+        }
+        dataBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ArticleListAdapter.this.onItemClickListener != null) {
+                    ArticleListAdapter.this.onItemClickListener.onItemClick(position);
+                }
+            }
+        });
+    }
+
+    @Override
+    public int getItemLayoutId(int viewType) {
+        return R.layout.article_recyler_item;
+    }
+
+    @Override
+    public int getItemCount() {
+        return articleBeans == null ? 0 : articleBeans.size();
+    }
+
+   public interface OnItemClickListener {
+        void onItemClick(int pos);
+    }
+
+}

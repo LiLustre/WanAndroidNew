@@ -1,6 +1,7 @@
 package com.lize.wanandroid.model.article;
 
 import com.google.gson.annotations.*;
+import com.lize.wanandroid.model.tag.Tag;
 
 import java.util.List;
 
@@ -68,7 +69,18 @@ public class ArticleBean {
     @SerializedName("zan")
     private int zan;
     @SerializedName("tags")
-    private List<?> tags;
+    private List<Tag> tags;
+
+
+    private boolean isTop;
+
+    public boolean isTop() {
+        return isTop;
+    }
+
+    public void setTop(boolean top) {
+        isTop = top;
+    }
 
     public String getApkLink() {
         return apkLink;
@@ -294,11 +306,11 @@ public class ArticleBean {
         this.zan = zan;
     }
 
-    public List<?> getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(List<?> tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 }

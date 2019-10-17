@@ -1,12 +1,12 @@
 package com.lize.wanandroid.http.request;
 
-import com.lize.wanandroid.http.ResponeData;
-import com.lize.wanandroid.http.retrofit.BaseResponeCallBack;
+import com.lize.wanandroid.config.URLConfig;
+import com.lize.wanandroid.http.WanAndroidPageData;
+import com.lize.wanandroid.http.WanAndroidRespone;
+import com.lize.wanandroid.http.retrofit.BaseCallback;
 import com.lize.wanandroid.http.retrofit.HttpManager;
 import com.lize.wanandroid.http.service.ArticleService;
 import com.lize.wanandroid.model.article.ArticleBean;
-
-import java.util.List;
 
 /**
  * @author Lize
@@ -14,8 +14,9 @@ import java.util.List;
  */
 public class ArticleRequest {
 
-    public void getNewArticleList(String page, BaseResponeCallBack<ResponeData<List<ArticleBean>>> responeCallBack) {
-        HttpManager.getRetrofit("")
+    public void getNewArticleList(String page, BaseCallback<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> responeCallBack) {
+
+        HttpManager.getRetrofit(URLConfig.getInstance().getServerUrl())
                 .create(ArticleService.class)
                 .getNewPostsList(page)
                 .enqueue(responeCallBack);

@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="@color/white"
             app:itemIconTint="@drawable/mian_bottom_tab_selector"
             app:itemTextColor="@drawable/mian_bottom_tab_selector"
             app:menu="@menu/main_bottom_tab_menu"/>

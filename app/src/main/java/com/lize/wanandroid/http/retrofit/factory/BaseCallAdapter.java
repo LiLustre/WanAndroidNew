@@ -1,10 +1,12 @@
 package com.lize.wanandroid.http.retrofit.factory;
 
 
+import androidx.annotation.Nullable;
 
 import com.lize.wanandroid.http.retrofit.BaseCall;
 
 import java.lang.reflect.Type;
+import java.util.concurrent.Executor;
 
 import retrofit2.Call;
 import retrofit2.CallAdapter;
@@ -14,9 +16,12 @@ import retrofit2.CallAdapter;
  */
 public class BaseCallAdapter<R> implements CallAdapter<R, Object> {
     private final Type responseType;
+    private final @Nullable
+    Executor callbackExecutor;
 
-    public BaseCallAdapter(Type responseType) {
+    public BaseCallAdapter(Type responseType, Executor callbackExecutor) {
         this.responseType = responseType;
+        this.callbackExecutor = callbackExecutor;
     }
 
     @Override
@@ -33,6 +38,9 @@ public class BaseCallAdapter<R> implements CallAdapter<R, Object> {
      */
     @Override
     public Object adapt(Call<R> call) {
-        return new BaseCall<R>(call);
+        if (callbackExecutor==null){
+            return call;
+        }
+        return new BaseCall<R>(callbackExecutor,call);
     }
 }
