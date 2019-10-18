@@ -2,6 +2,7 @@ package com.lize.wanandroid.ui.adapter;
 
 import android.view.View;
 
+import androidx.core.content.ContextCompat;
 import androidx.databinding.ViewDataBinding;
 
 import com.bumptech.glide.Glide;
@@ -39,15 +40,15 @@ public class ArticleListAdapter extends DataBindingRecyclerAdapter {
         List<String> flag = new ArrayList<>();
         if (articleBean.isTop()) {
             dataBinding.topIv.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             dataBinding.topIv.setVisibility(View.GONE);
         }
         if (articleBean.isFresh()) {
             flag.add("最近收录");
         }
-        if (ValueUtil.isListValid(flag)){
-            dataBinding.titleTv.setContentAndTag("  "+articleBean.getTitle(), flag);
-        }else {
+        if (ValueUtil.isListValid(flag)) {
+            dataBinding.titleTv.setContentAndTag("  " + articleBean.getTitle(), flag);
+        } else {
             dataBinding.titleTv.setText(articleBean.getTitle());
         }
 
@@ -57,9 +58,9 @@ public class ArticleListAdapter extends DataBindingRecyclerAdapter {
                 tag.add(tag1.getName());
             }
         }
-        if (ValueUtil.isListValid(tag)){
-            dataBinding.classifyTv.setContentAndTag("  "+articleBean.getSuperChapterName() + " / " + articleBean.getChapterName(), tag);
-        }else {
+        if (ValueUtil.isListValid(tag)) {
+            dataBinding.classifyTv.setContentAndTag("  " + articleBean.getSuperChapterName() + " / " + articleBean.getChapterName(), tag);
+        } else {
             dataBinding.classifyTv.setText(articleBean.getSuperChapterName() + " / " + articleBean.getChapterName());
         }
 
@@ -80,6 +81,34 @@ public class ArticleListAdapter extends DataBindingRecyclerAdapter {
                 }
             }
         });
+        if (ValueUtil.isStringValid(articleBean.getShareUser())) {
+            dataBinding.authorTv.setText("分享•" + articleBean.getShareUser());
+        }
+        if (ValueUtil.isStringValid(articleBean.getAuthor())) {
+            dataBinding.authorTv.setText("原创•" + articleBean.getAuthor());
+        }
+        dataBinding.moreIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ArticleListAdapter.this.onItemClickListener != null) {
+                    ArticleListAdapter.this.onItemClickListener.onMoreClick(position);
+                }
+            }
+        });
+        dataBinding.collectionIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ArticleListAdapter.this.onItemClickListener != null) {
+                    ArticleListAdapter.this.onItemClickListener.onCollectionClick(position);
+                }
+            }
+        });
+        if (articleBean.isCollect()) {
+            ((ArticleRecylerItemBinding) binding).collectionIb.setImageDrawable(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.is_collection_icon));
+        } else {
+            ((ArticleRecylerItemBinding) binding).collectionIb.setImageDrawable(ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.collection_icon));
+
+        }
     }
 
     @Override
@@ -92,8 +121,12 @@ public class ArticleListAdapter extends DataBindingRecyclerAdapter {
         return articleBeans == null ? 0 : articleBeans.size();
     }
 
-   public interface OnItemClickListener {
+    public interface OnItemClickListener {
         void onItemClick(int pos);
+
+        void onMoreClick(int pos);
+
+        void onCollectionClick(int pos);
     }
 
 }

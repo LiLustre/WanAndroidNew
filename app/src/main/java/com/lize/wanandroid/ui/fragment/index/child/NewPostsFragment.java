@@ -65,6 +65,16 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
                 public void onItemClick(int pos) {
 
                 }
+
+                @Override
+                public void onMoreClick(int pos) {
+
+                }
+
+                @Override
+                public void onCollectionClick(int pos) {
+
+                }
             });
             bindind.newPostsRv.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
             loadmoreWrapper = new LoadmoreWrapper(articleListAdapter, getActivity());

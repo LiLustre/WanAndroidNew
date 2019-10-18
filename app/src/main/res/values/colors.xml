@@ -15,6 +15,6 @@
     <!-- 灰色字 -->
     <color name="grey_text_color">#757575</color>
     <!-- 黑色字 -->
-    <color name="black_color">#444444</color>
+    <color name="black_color">#000000</color>
     <color name="red_text_color">#ff3d00</color>
 </resources>
