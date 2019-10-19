@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.LazyBaseFragment;
@@ -48,10 +49,18 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
     protected void onFragmentFirstVisible() {
         bindind.setLifecycleOwner(this);
         newPostsViewModel = ViewModelProviders.of(this).get(NewPostsViewModel.class);
-        newPostsViewModel.getArticleList();
+        newPostsViewModel.getArticleList(true);
+        bindind.newPostsSrl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                newPostsViewModel.getArticleList(true);
+            }
+        });
+        bindind.newPostsSrl.setRefreshing(true);
         newPostsViewModel.getArticleListLD().observe(this, new Observer<List<ArticleBean>>() {
             @Override
             public void onChanged(List<ArticleBean> articleBeans) {
+                bindind.newPostsSrl.setRefreshing(false);
                 setupAdapter();
             }
         });
@@ -81,7 +90,7 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
             loadmoreWrapper.setOnLoadMoreListener(new LoadmoreWrapper.OnLoadMoreListener() {
                 @Override
                 public void onLoadMoreRequested() {
-                    newPostsViewModel.getArticleList();
+                    newPostsViewModel.getArticleList(false);
                 }
             });
             bindind.newPostsRv.setAdapter(loadmoreWrapper);

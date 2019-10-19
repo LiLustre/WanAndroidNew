@@ -33,6 +33,7 @@ public class ArticleModel {
 
     public void getIndexArticle(int page, final OnIndexArticltLoadListener onIndexArticltLoadListener) {
         if (page == 0) {
+            indexArticleRequestFinsihFlag.set(2);
             getToptList(new BaseCallback<WanAndroidRespone<List<ArticleBean>>>() {
                 @Override
                 public void onSuccess(Call<WanAndroidRespone<List<ArticleBean>>> call, Response<WanAndroidRespone<List<ArticleBean>>> response) {
@@ -43,7 +44,7 @@ public class ArticleModel {
                         if (indexArticleRequestFinsihFlag.get() > 0) {
                             onRequestInitDataFinish(onIndexArticltLoadListener);
                         }
-                    }else {
+                    } else {
                         isRequestArticleListError.set(true);
                         if (indexArticleRequestFinsihFlag.get() > 0) {
                             onRequestInitDataFinish(onIndexArticltLoadListener);
@@ -78,7 +79,7 @@ public class ArticleModel {
                         if (indexArticleRequestFinsihFlag.get() > 0) {
                             onRequestInitDataFinish(onIndexArticltLoadListener);
                         }
-                    }else {
+                    } else {
                         isRequestArticleListError.set(true);
                         if (indexArticleRequestFinsihFlag.get() > 0) {
                             onRequestInitDataFinish(onIndexArticltLoadListener);
@@ -108,8 +109,8 @@ public class ArticleModel {
                 public void onSuccess(Call<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> call, Response<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> response) {
                     if (response.body() != null && response.body().getErrorCode() == ErrorCode.ERROR_CODE_OK) {
                         pageCount = response.body().getData().getPageCount();
-                        onIndexArticltLoadListener.onLoadSuccess(response.body().getData().getDatas(),pageCount);
-                    }else {
+                        onIndexArticltLoadListener.onLoadSuccess(response.body().getData().getDatas(), pageCount);
+                    } else {
                         onIndexArticltLoadListener.onLoadError();
                     }
 
@@ -141,7 +142,7 @@ public class ArticleModel {
                 List<ArticleBean> indexArticleList = new ArrayList<>();
                 indexArticleList.addAll(topArticle);
                 indexArticleList.addAll(normalArticle);
-                onIndexArticltLoadListener.onLoadSuccess(indexArticleList,pageCount);
+                onIndexArticltLoadListener.onLoadSuccess(indexArticleList, pageCount);
             }
         }
     }
@@ -157,7 +158,7 @@ public class ArticleModel {
 
 
     public interface OnIndexArticltLoadListener {
-        void onLoadSuccess(List<ArticleBean> articleBeans,int pageCount);
+        void onLoadSuccess(List<ArticleBean> articleBeans, int pageCount);
 
         void onLoadError();
     }
