@@ -156,6 +156,10 @@ public class ArticleModel {
         articleRequest.getTopArticleList(baseResponeCallBack);
     }
 
+    public void getProjectList(String page,BaseCallback<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> baseResponeCallBack) {
+        articleRequest.getProjectList(page,baseResponeCallBack);
+    }
+
 
     public interface OnIndexArticltLoadListener {
         void onLoadSuccess(List<ArticleBean> articleBeans, int pageCount);

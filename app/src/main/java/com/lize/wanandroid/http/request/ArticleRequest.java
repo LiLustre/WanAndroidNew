@@ -18,6 +18,7 @@ public class ArticleRequest {
 
     /**
      * 获取首页文章
+     *
      * @param page
      * @param responeCallBack
      */
@@ -32,13 +33,29 @@ public class ArticleRequest {
 
     /**
      * 获取置顶文章
+     *
      * @param responeCallBack
      */
-    public void getTopArticleList( BaseCallback<WanAndroidRespone<List<ArticleBean>>> responeCallBack) {
+    public void getTopArticleList(BaseCallback<WanAndroidRespone<List<ArticleBean>>> responeCallBack) {
 
         HttpManager.getRetrofit(URLConfig.getInstance().getServerUrl())
                 .create(ArticleService.class)
                 .getTopPostsList()
+                .enqueue(responeCallBack);
+
+    }
+
+
+    /**
+     * 获取项目文章
+     *
+     * @param responeCallBack
+     */
+    public void getProjectList(String page, BaseCallback<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> responeCallBack) {
+
+        HttpManager.getRetrofit(URLConfig.getInstance().getServerUrl())
+                .create(ArticleService.class)
+                .getProjectList(page)
                 .enqueue(responeCallBack);
 
     }

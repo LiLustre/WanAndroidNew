@@ -25,4 +25,8 @@ public interface ArticleService {
     BaseCall<WanAndroidRespone<List<ArticleBean>>> getTopPostsList();
 
 
+    @GET("article/listproject/{page}/json")
+    BaseCall<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> getProjectList(@Path("page") String page);
+
+
 }
