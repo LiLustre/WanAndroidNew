@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,19 +11,120 @@
             android:id="@+id/content_fl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/bnv_bar"
-            >
+            android:layout_above="@id/bottom_tab_ll">
 
         </FrameLayout>
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bnv_bar"
-            style="@style/Widget.Design.BottomNavigationView"
+
+        <LinearLayout
+            android:id="@+id/bottom_tab_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/white"
-            app:itemIconTint="@drawable/mian_bottom_tab_selector"
-            app:itemTextColor="@drawable/mian_bottom_tab_selector"
-            app:menu="@menu/main_bottom_tab_menu"/>
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="vertical"
+                app:cardBackgroundColor="@color/white"
+                android:button="@null"
+                >
+
+                <TextView
+                    android:id="@+id/home_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/home_menu_home_icon_selector"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:onClick="onHomeClick"
+                    android:text="首页"
+                    android:textColor="@drawable/mian_bottom_tab_selector"
+                    android:textSize="11dp"
+                    android:textStyle="bold"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="vertical"
+                app:cardBackgroundColor="@color/white"
+                android:onClick="onClassifyClick">
+
+                <TextView
+                    android:id="@+id/classify_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/home_menu_classify_icon_selector"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="分类"
+                    android:textColor="@drawable/mian_bottom_tab_selector"
+                    android:textSize="11dp"
+                    android:textStyle="bold"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="vertical"
+                app:cardBackgroundColor="@color/white"
+                android:onClick="onSquareClick">
+
+                <TextView
+                    android:id="@+id/square_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/home_menu_square_icon_selector"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="广场"
+                    android:textColor="@drawable/mian_bottom_tab_selector"
+                    android:textSize="11dp"
+                    android:textStyle="bold"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="vertical"
+                app:cardBackgroundColor="@color/white"
+                android:onClick="onMeClick">
+
+                <TextView
+                    android:id="@+id/me_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/home_menu_me_icon_selector"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="我"
+                    android:textColor="@drawable/mian_bottom_tab_selector"
+                    android:textSize="11dp"
+                    android:textStyle="bold"></TextView>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
     </RelativeLayout>
 </layout>
