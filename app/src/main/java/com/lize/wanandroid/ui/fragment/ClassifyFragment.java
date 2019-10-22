@@ -72,6 +72,7 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 parentClassifyPos = tab.getPosition();
+                initChildTab();
             }
 
             @Override
@@ -93,8 +94,8 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
         if (secondaryArticleClassifyAdapter == null) {
             secondaryArticleClassifyAdapter = new SecondaryArticleClassifyAdapter(childArticleClassifyList);
             secondaryArticleClassifyAdapter.setSelectPos(0);
-            bindind.classifyArticleRv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-            bindind.classifyArticleRv.setAdapter(secondaryArticleClassifyAdapter);
+            bindind.secondaryClassifyRv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+            bindind.secondaryClassifyRv.setAdapter(secondaryArticleClassifyAdapter);
         } else {
             secondaryArticleClassifyAdapter.setSelectPos(0);
             secondaryArticleClassifyAdapter.notifyDataSetChanged();
