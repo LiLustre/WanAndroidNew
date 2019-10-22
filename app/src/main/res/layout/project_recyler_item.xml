@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
 
-                        android:text="lizhe"
+                        android:text=""
                         android:textColor="@color/normal_search_bar_bg_color"
                         android:textSize="14dp" />
 
@@ -58,7 +58,7 @@
                         android:layout_below="@id/author_tv"
                         android:layout_alignParentLeft="true"
                         android:paddingTop="5dp"
-                        android:text="1小时"
+                        android:text=""
                         android:textColor="@color/gray"
                         android:textSize="10dp" />
 
@@ -89,7 +89,7 @@
                         android:ellipsize="end"
                         android:gravity="top"
                         android:maxLines="3"
-                        android:text="Android 核心知识进阶学习教程"
+                        android:text=""
                         android:textColor="@color/common_text_color"
                         android:textSize="15dp"
                         android:textStyle="bold"
@@ -101,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/common_text_color"
                         android:layout_below="@id/title_tv"
-                        android:text="，项目，体系，干货，搜索，收藏，妹子等功能"
+                        android:text=""
                         android:layout_toLeftOf="@id/article_img_iv"
                         android:layout_alignParentLeft="true"
                         />
@@ -133,7 +133,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/collection_ib"
                         android:gravity="top"
-                        android:text="项目"
+                        android:text=""
                         android:textColor="@color/gray"
                         android:textSize="12dp"
                         app:flagLayout="@layout/classify_tag"

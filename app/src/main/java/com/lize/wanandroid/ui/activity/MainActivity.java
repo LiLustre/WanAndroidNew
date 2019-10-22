@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivityMainBinding;
-import com.lize.wanandroid.ui.fragment.ClassifyFragment;
+import com.lize.wanandroid.ui.fragment.classify.ClassifyFragment;
 import com.lize.wanandroid.ui.fragment.MeFragment;
 import com.lize.wanandroid.ui.fragment.PiazzaFragment;
 import com.lize.wanandroid.ui.fragment.index.IndexFragment;

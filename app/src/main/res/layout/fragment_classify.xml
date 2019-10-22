@@ -111,12 +111,11 @@
             </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/classify_article_rv"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/classify_article_vp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:visibility="gone"
             />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

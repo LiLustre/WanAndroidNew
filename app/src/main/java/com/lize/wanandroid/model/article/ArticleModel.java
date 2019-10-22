@@ -161,6 +161,10 @@ public class ArticleModel {
     }
 
 
+    public void getArticleList(String page,String cid,BaseCallback<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> baseResponeCallBack){
+        articleRequest.getArticleList(page,cid,baseResponeCallBack);
+    }
+
     public interface OnIndexArticltLoadListener {
         void onLoadSuccess(List<ArticleBean> articleBeans, int pageCount);
 

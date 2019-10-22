@@ -1,10 +1,11 @@
-package com.lize.wanandroid.ui.fragment;
+package com.lize.wanandroid.ui.fragment.classify;
 
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +17,8 @@ import com.lize.wanandroid.base.fragment.BaseFragment;
 import com.lize.wanandroid.databinding.FragmentClassifyBinding;
 import com.lize.wanandroid.model.classify.ArticleClassify;
 import com.lize.wanandroid.ui.adapter.SecondaryArticleClassifyAdapter;
+import com.lize.wanandroid.ui.adapter.base.FragmentAdapter;
+import com.lize.wanandroid.ui.fragment.classify.child.ArticleListFragment;
 import com.lize.wanandroid.viewmodel.ArtcileClassifyViewModel;
 
 import java.util.ArrayList;
@@ -32,6 +35,7 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
     private List<ArticleClassify> childArticleClassifyList = new ArrayList<>();
     private List<ArticleClassify> parentArticleClassifyList = new ArrayList<>();
     private SecondaryArticleClassifyAdapter secondaryArticleClassifyAdapter;
+    private List<Fragment> fragments;
 
     public static ClassifyFragment getInstance() {
         if (instance == null) {
@@ -64,9 +68,6 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
 
     private void initTab(List<ArticleClassify> articleClassifies) {
         bindind.tabLl.setVisibility(View.VISIBLE);
-        for (ArticleClassify tab : articleClassifies) {
-            bindind.tlTab.addTab(bindind.tlTab.newTab().setText(tab.getName()));
-        }
         parentClassifyPos = 0;
         bindind.tlTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -83,9 +84,22 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-        initChildTab();
-
-
+        //initChildTab();
+        fragments = new ArrayList<>();
+        for (int i = 0; i < articleClassifies.size(); i++) {
+            ArticleClassify tabArticleClassify = articleClassifies.get(i);
+            bindind.tlTab.addTab(bindind.tlTab.newTab().setText(tabArticleClassify.getName()));
+            ArticleListFragment articleListFragment = ArticleListFragment.newInstance();
+            fragments.add(articleListFragment);
+        }
+        bindind.classifyArticleVp.setAdapter(new FragmentAdapter(getChildFragmentManager(), fragments));
+        bindind.tlTab.setupWithViewPager(bindind.classifyArticleVp);
+        for (int i = 0; i < articleClassifies.size(); i++) {
+            ArticleClassify tabArticleClassify = articleClassifies.get(i);
+            bindind.tlTab.getTabAt(i).setText(tabArticleClassify.getName());
+        }
+        bindind.classifyArticleVp.setCurrentItem(parentClassifyPos);
+        bindind.tlTab.getTabAt(parentClassifyPos).select();
     }
 
     private void initChildTab() {
