@@ -93,6 +93,13 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
         childArticleClassifyList.addAll(parentArticleClassifyList.get(parentClassifyPos).getChildren());
         if (secondaryArticleClassifyAdapter == null) {
             secondaryArticleClassifyAdapter = new SecondaryArticleClassifyAdapter(childArticleClassifyList);
+            secondaryArticleClassifyAdapter.setOnItemClickListener(new SecondaryArticleClassifyAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int pos) {
+                    secondaryArticleClassifyAdapter.setSelectPos(pos);
+                    secondaryArticleClassifyAdapter.notifyDataSetChanged();
+                }
+            });
             secondaryArticleClassifyAdapter.setSelectPos(0);
             bindind.secondaryClassifyRv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
             bindind.secondaryClassifyRv.setAdapter(secondaryArticleClassifyAdapter);

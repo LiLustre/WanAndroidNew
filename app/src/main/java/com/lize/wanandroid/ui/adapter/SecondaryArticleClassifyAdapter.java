@@ -42,8 +42,6 @@ public class SecondaryArticleClassifyAdapter extends DataBindingRecyclerAdapter 
             @Override
             public void onClick(View v) {
                 if (SecondaryArticleClassifyAdapter.this.onItemClickListener != null) {
-                    selectPos = position;
-                    notifyDataSetChanged();
                     onItemClickListener.onItemClick(position);
                 }
             }
