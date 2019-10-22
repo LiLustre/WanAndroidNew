@@ -15,7 +15,7 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-    android:orientation="vertical"
+        android:orientation="vertical"
         app:cardBackgroundColor="@color/white">
 
         <RelativeLayout

@@ -56,6 +56,7 @@ public class IndexFragment extends BaseFragment<FragmentIndexBinding> {
         for (int i = 0; i < tabs.length; i++) {//解决tabLayout的tab不显示问题
             bindind.tlTab.getTabAt(i).setText(tabs[i]);
         }
+
     }
 
     @Override
