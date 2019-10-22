@@ -27,27 +27,29 @@
                     android:textStyle="bold" />
 
                 <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:background="@null"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:src="@drawable/project_icon" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@null"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/project_icon" />
 
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/tab_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/Themecolor"
-                    >
+                    android:background="@color/Themecolor">
+
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tl_tab"
                         android:layout_width="match_parent"
@@ -78,15 +80,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_below="@id/tl_tab"
-                    android:orientation="horizontal"
                     android:background="@color/white"
-                    >
+                    android:orientation="horizontal">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toLeftOf="@id/secondary_classify_ib"
-                        >
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@id/secondary_classify_ib">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
@@ -98,28 +98,23 @@
                         android:background="@null"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:src="@drawable/secondary_classify_down_arrows_icon" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@color/com_line_color"
                         android:layout_alignParentBottom="true"
-                        />
+                        android:background="@color/com_line_color" />
                 </RelativeLayout>
             </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/classify_article_srl"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/classify_article_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/classify_article_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:visibility="gone"
+            />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
