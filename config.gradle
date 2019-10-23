@@ -8,37 +8,38 @@ ext {
     isMinifyEnabled = false
     dataBindingEnable = true
     versions = [
-            applicationId           : "com.lize.wanandroid",        //应用ID
-            versionCode             : 1,                    //版本号
-            versionName             : "1.0.0",              //版本名称
-            serverVersion           : "-d",                   //版本类型
-            compileSdkVersion       : 28,                 //编译SDK版本
-            minSdkVersion           : 21,                 //最小支持的SDK
-            targetSdkVersion        : 28,                  // 目标版本sdk
-            androidSupportSdkVersion: "28.0.0",              //support 版本号
-            androidxVersion         : "1.1.0",              //
-            coordinatorlayoutVersion: "1.1.0-beta01",              //
-            supportMaterialVersion  : "1.1.0-beta01",              //
-            lifecycleVersion       : "2.1.0",              //
-            swiperefreshlayoutVersion       : "1.0.0",              //
-            glideVirsion            : "3.6.1",
-            retrofitSdkViersion        : "2.6.1",
-            okhttpVersion           : "3.12.0",
+            applicationId            : "com.lize.wanandroid",        //应用ID
+            versionCode              : 1,                    //版本号
+            versionName              : "1.0.0",              //版本名称
+            serverVersion            : "-d",                   //版本类型
+            compileSdkVersion        : 28,                 //编译SDK版本
+            minSdkVersion            : 21,                 //最小支持的SDK
+            targetSdkVersion         : 28,                  // 目标版本sdk
+            androidSupportSdkVersion : "28.0.0",              //support 版本号
+            androidxVersion          : "1.1.0",              //
+            coordinatorlayoutVersion : "1.1.0-beta01",              //
+            supportMaterialVersion   : "1.1.0-beta01",              //
+            lifecycleVersion         : "2.1.0",              //
+            swiperefreshlayoutVersion: "1.0.0",              //
+            glideVirsion             : "3.6.1",
+            retrofitSdkViersion      : "2.6.1",
+            okhttpVersion            : "3.12.0",
+            eventBusVersion          : "3.1.1",
 
     ]
 
     urls = [
-          serverUrl:"https://www.wanandroid.com/"
+            serverUrl: "https://www.wanandroid.com/"
     ]
 
 
     dependencies = [
-            androidx             :"androidx.appcompat:appcompat:${versions["androidxVersion"]}",
-            coordinatorlayout    :"androidx.coordinatorlayout:coordinatorlayout:${versions["coordinatorlayoutVersion"]}",
-            supportMaterial        :"com.google.android.material:material:${versions["supportMaterialVersion"]}",
-            swipeRefreshLayout        :"androidx.swiperefreshlayout:swiperefreshlayout:${versions["swiperefreshlayoutVersion"]}",
+            androidx             : "androidx.appcompat:appcompat:${versions["androidxVersion"]}",
+            coordinatorlayout    : "androidx.coordinatorlayout:coordinatorlayout:${versions["coordinatorlayoutVersion"]}",
+            supportMaterial      : "com.google.android.material:material:${versions["supportMaterialVersion"]}",
+            swipeRefreshLayout   : "androidx.swiperefreshlayout:swiperefreshlayout:${versions["swiperefreshlayoutVersion"]}",
             //lifecycle 扩展
-            lifecycle        :"androidx.lifecycle:lifecycle-extensions:${versions["lifecycleVersion"]}",
+            lifecycle            : "androidx.lifecycle:lifecycle-extensions:${versions["lifecycleVersion"]}",
             //glide依赖
             glide                : "com.github.bumptech.glide:glide:${versions["glideVirsion"]}",
             // retrofit 2
@@ -47,6 +48,8 @@ ext {
             retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${versions["retrofitSdkViersion"]}",
             //日志拦截器
             okhttpLogInerceptor  : "com.squareup.okhttp3:logging-interceptor:${versions["okhttpVersion"]}",
+            //EventBus
+            eventBus             : "org.greenrobot:eventbus:${versions["eventBusVersion"]}"
 
     ]
 

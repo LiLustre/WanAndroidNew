@@ -8,7 +8,7 @@ android {
         versionCode rootProject.ext.versions.versionCode
         versionName rootProject.ext.versions.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String","SERVER_URL","\""+rootProject.ext.urls.serverUrl+"\"")
+        buildConfigField("String", "SERVER_URL", "\"" + rootProject.ext.urls.serverUrl + "\"")
     }
     signingConfigs {
         debug {
@@ -74,12 +74,9 @@ dependencies {
     implementation rootProject.ext.dependencies["retrofitSdk"]
     implementation rootProject.ext.dependencies["retrofitConverterGson"]
     implementation rootProject.ext.dependencies["okhttpLogInerceptor"]
+    implementation rootProject.ext.dependencies["eventBus"]
 
 
-
-
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
-
-
-
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }

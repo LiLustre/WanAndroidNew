@@ -1,6 +1,8 @@
 package com.lize.wanandroid.ui.fragment.classify;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -13,10 +15,13 @@ import com.google.android.material.tabs.TabLayout;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.BaseFragment;
 import com.lize.wanandroid.databinding.FragmentClassifyBinding;
+import com.lize.wanandroid.domain.StartActivityForDomain;
 import com.lize.wanandroid.model.classify.ArticleClassify;
+import com.lize.wanandroid.ui.activity.ArticleClassifyActivity;
 import com.lize.wanandroid.ui.adapter.SecondaryArticleClassifyAdapter;
 import com.lize.wanandroid.ui.adapter.base.FragmentAdapter;
 import com.lize.wanandroid.ui.fragment.classify.child.ArticleListFragment;
+import com.lize.wanandroid.util.ValueUtil;
 import com.lize.wanandroid.viewmodel.ArtcileClassifyViewModel;
 
 import java.util.ArrayList;
@@ -54,22 +59,57 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindind.setLifecycleOwner(this);
+        initViewClick();
         artcileClassifyViewModel = ViewModelProviders.of(this).get(ArtcileClassifyViewModel.class);
         artcileClassifyViewModel.getArticleClassifyList();
         artcileClassifyViewModel.getArticleClassify().observe(this, new Observer<List<ArticleClassify>>() {
             @Override
             public void onChanged(List<ArticleClassify> articleClassifies) {
                 parentArticleClassifyList = articleClassifies;
-                initTab(articleClassifies);
+                initTab();
 
             }
         });
     }
 
-    private void initTab(List<ArticleClassify> articleClassifies) {
+    /**
+     * 初始化点击事件
+     */
+    private void initViewClick() {
+        //标题点击
+        bindind.titleTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!ValueUtil.isListValid(parentArticleClassifyList)) {
+                    return;
+                }
+                Intent intent = new Intent(getActivity(), ArticleClassifyActivity.class);
+                intent.putParcelableArrayListExtra("classify", (ArrayList<? extends Parcelable>) parentArticleClassifyList);
+                startActivityForResult(intent, StartActivityForDomain.REQUEST_MAIN_CLASSIFY_CODE);
+
+            }
+        });
+        //项目点击
+        bindind.projectIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //子分类折叠按钮点击
+        bindind.childClassifyIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+    }
+
+    private void initTab() {
         bindind.tabRl.setVisibility(View.VISIBLE);
-        parentClassifyPos = 10;
-        bindind.titleTv.setText(articleClassifies.get(parentClassifyPos).getName());
+        parentClassifyPos = 0;
+        bindind.titleTv.setText(parentArticleClassifyList.get(parentClassifyPos).getName());
         bindind.tlTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -86,10 +126,10 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
         });
         fragments = new ArrayList<>();
         childClassifyPos = 0;
-        childArticleClassifyList = articleClassifies.get(parentClassifyPos).getChildren();
-        if (childArticleClassifyList.size()>3){
+        childArticleClassifyList = parentArticleClassifyList.get(parentClassifyPos).getChildren();
+        if (childArticleClassifyList.size() > 3) {
             bindind.childClassifyIb.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             bindind.childClassifyIb.setVisibility(View.GONE);
         }
         for (int i = 0; i < childArticleClassifyList.size(); i++) {

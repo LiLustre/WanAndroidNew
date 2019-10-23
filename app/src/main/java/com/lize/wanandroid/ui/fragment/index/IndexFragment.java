@@ -2,12 +2,14 @@ package com.lize.wanandroid.ui.fragment.index;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.BaseFragment;
 import com.lize.wanandroid.databinding.FragmentIndexBinding;
@@ -39,6 +41,12 @@ public class IndexFragment extends BaseFragment<FragmentIndexBinding> {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        bindind.appbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                //Log.e("IndexFragment", "onOffsetChanged:verticalOffset-- "+verticalOffset );
+            }
+        });
         initChildFragment();
     }
 
@@ -56,7 +64,6 @@ public class IndexFragment extends BaseFragment<FragmentIndexBinding> {
         for (int i = 0; i < tabs.length; i++) {//解决tabLayout的tab不显示问题
             bindind.tlTab.getTabAt(i).setText(tabs[i]);
         }
-
     }
 
     @Override
