@@ -49,7 +49,9 @@
 
                         android:text="lizhe"
                         android:textColor="@color/normal_search_bar_bg_color"
-                        android:textSize="14dp" />
+                        android:textSize="13dp"
+                        android:textStyle="bold"
+                        />
 
                     <TextView
                         android:id="@+id/time_tv"
@@ -96,15 +98,30 @@
                         android:textStyle="bold"
                         app:flagLayout="@layout/flag"
                         app:flagTVId="@id/tv_tag" />
-
+                    <TextView
+                        android:id="@+id/desc_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/common_text_color"
+                        android:layout_below="@id/title_tv"
+                        android:text=""
+                        android:layout_toLeftOf="@id/article_img_iv"
+                        android:layout_alignParentLeft="true"
+                        android:textSize="13dp"
+                        android:maxEms="50"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        />
                     <com.lize.wanandroid.ui.widget.RoundImageView
                         android:id="@+id/article_img_iv"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:scaleType="centerCrop" />
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="8dp"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout

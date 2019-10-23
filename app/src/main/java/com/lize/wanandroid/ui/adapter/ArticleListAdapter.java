@@ -95,6 +95,12 @@ public class ArticleListAdapter extends DataBindingRecyclerAdapter {
                 }
             }
         });
+        if (ValueUtil.isStringValid(articleBean.getDesc())) {
+            dataBinding.descTv.setVisibility(View.VISIBLE);
+            dataBinding.descTv.setText(articleBean.getDesc());
+        } else {
+            dataBinding.descTv.setVisibility(View.GONE);
+        }
         dataBinding.collectionIb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

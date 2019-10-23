@@ -42,15 +42,19 @@
                         android:drawableLeft="@drawable/index_search_bar_icon"
                         />
                 </LinearLayout>
-                <ImageButton
+                <TextView
                     android:id="@+id/wait_do_ib"
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                   android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-
-                    android:src="@drawable/index_wait_to_do_icon"
-                    android:background="@null"
+                    android:layout_marginLeft="8dp"
+                    android:drawableLeft="@drawable/index_wait_to_do_icon"
+                    android:text="TODO"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:paddingRight="10dp"
                     />
             </RelativeLayout>
             <com.google.android.material.tabs.TabLayout
