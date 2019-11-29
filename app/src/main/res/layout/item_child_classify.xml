@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <TextView
+        android:id="@+id/tv_right_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="官方发布"
+        android:textColor="@color/common_text_color"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="8dp"
+        android:background="@drawable/item_rightbackground">
+
+    </TextView>
+</layout>

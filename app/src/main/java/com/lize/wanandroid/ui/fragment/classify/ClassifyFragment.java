@@ -27,6 +27,8 @@ import com.lize.wanandroid.viewmodel.ArtcileClassifyViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * @author Lize
  * on 2019/10/15
@@ -66,6 +68,8 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
             @Override
             public void onChanged(List<ArticleClassify> articleClassifies) {
                 parentArticleClassifyList = articleClassifies;
+                parentClassifyPos = 0;
+                childClassifyPos = 0;
                 initTab();
 
             }
@@ -108,9 +112,9 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
 
     private void initTab() {
         bindind.tabRl.setVisibility(View.VISIBLE);
-        parentClassifyPos = 0;
+
         bindind.titleTv.setText(parentArticleClassifyList.get(parentClassifyPos).getName());
-        bindind.tlTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        /*bindind.tlTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 childClassifyPos = tab.getPosition();
@@ -123,15 +127,18 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
             }
-        });
-        fragments = new ArrayList<>();
-        childClassifyPos = 0;
+        });*/
+        if (fragments == null) {
+            fragments = new ArrayList<>();
+        }
+        fragments.clear();
         childArticleClassifyList = parentArticleClassifyList.get(parentClassifyPos).getChildren();
         if (childArticleClassifyList.size() > 3) {
             bindind.childClassifyIb.setVisibility(View.VISIBLE);
         } else {
             bindind.childClassifyIb.setVisibility(View.GONE);
         }
+        bindind.tlTab.removeAllTabs();
         for (int i = 0; i < childArticleClassifyList.size(); i++) {
             ArticleClassify tabArticleClassify = childArticleClassifyList.get(i);
             bindind.tlTab.addTab(bindind.tlTab.newTab().setText(tabArticleClassify.getName()));
@@ -150,4 +157,32 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
     }
 
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_OK) {
+            ArticleClassify parentClassify = data.getParcelableExtra("parentClassify");
+            ArticleClassify childClassify = data.getParcelableExtra("childClassify");
+            if (parentClassify == null) {
+                parentClassify = parentArticleClassifyList.get(0);
+            }
+            if (childClassify == null) {
+                childClassify = parentClassify.getChildren().get(0);
+            }
+            for (int i = 0; i < parentArticleClassifyList.size(); i++) {
+                if (parentArticleClassifyList.get(i).getId() == parentClassify.getId()) {
+                    parentClassifyPos = i;
+                    List<ArticleClassify> childArticleList = parentArticleClassifyList.get(i).getChildren();
+                    for (int j = 0; j < childArticleList.size(); j++) {
+                        if (childArticleList.get(j).getId() == childClassify.getId()) {
+                            childClassifyPos = j;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            initTab();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

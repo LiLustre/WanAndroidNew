@@ -1,16 +1,19 @@
 package com.lize.wanandroid.ui.activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivityMainBinding;
+import com.lize.wanandroid.domain.StartActivityForDomain;
 import com.lize.wanandroid.ui.fragment.classify.ClassifyFragment;
 import com.lize.wanandroid.ui.fragment.MeFragment;
 import com.lize.wanandroid.ui.fragment.PiazzaFragment;
@@ -168,4 +171,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
             ft.hide(meFragment);
         }
     }
+
+
 }

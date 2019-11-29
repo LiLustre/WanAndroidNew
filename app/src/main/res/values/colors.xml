@@ -22,5 +22,5 @@
 
     <color name="secondary_classify_normal_text_color">#A8B2BD</color>
     <color name="secondary_classify_normal_bg_color">#F4F6F9</color>
-
+    <color name="gray_300">#f3f3f3</color>
 </resources>
