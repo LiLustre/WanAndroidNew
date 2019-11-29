@@ -113,6 +113,9 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
     private void initTab() {
         bindind.tabRl.setVisibility(View.VISIBLE);
 
+
+
+
         bindind.titleTv.setText(parentArticleClassifyList.get(parentClassifyPos).getName());
         /*bindind.tlTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
