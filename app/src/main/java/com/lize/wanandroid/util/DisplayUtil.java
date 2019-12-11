@@ -2,6 +2,8 @@ package com.lize.wanandroid.util;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Point;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -92,7 +94,6 @@ public class DisplayUtil {
     }
 
 
-
     /**
      * 得到状态栏高度的方法
      *
@@ -150,4 +151,28 @@ public class DisplayUtil {
         return showPhoneNumber;
     }
 
+    public static int getScreenHeight(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        wm.getDefaultDisplay().getRealMetrics(dm);
+        return dm.heightPixels;
+    }
+
+    public static int getScreenWidth(Context context) {
+        //获取屏幕分宽高方法：
+        //1、
+        //return context.getResources().getDisplayMetrics().widthPixels;
+        //2、
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        wm.getDefaultDisplay().getRealMetrics(dm);
+        return dm.widthPixels;
+
+        //3、
+//        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+//        Point outSize = new Point();
+//        wm.getDefaultDisplay().getRealSize(outSize);
+//        int x = outSize.x;
+//        int y = outSize.y;
+    }
 }

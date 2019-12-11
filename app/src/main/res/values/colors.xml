@@ -17,7 +17,7 @@
     <!-- 黑色字 -->
     <color name="black_color">#000000</color>
     <color name="red_text_color">#ff3d00</color>
-
+    <color name="transprency">#00000000</color>
     <color name="com_line_color">#E6E6E6</color>
 
     <color name="secondary_classify_normal_text_color">#A8B2BD</color>

@@ -16,8 +16,8 @@
             >
             <RelativeLayout
                 android:id="@+id/toolBar"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
                 >
                 <LinearLayout
@@ -29,6 +29,8 @@
                     android:layout_centerVertical="true"
                     android:orientation="horizontal"
                     android:layout_toLeftOf="@id/wait_do_ib"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
                     >
                     <TextView
                         android:layout_width="wrap_content"

@@ -14,4 +14,15 @@
         <item name="colorControlNormal">@android:color/white</item>
     </style>
 
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/transprency</item>
+        <item name="android:background">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+    <style name="GoUpPopDialogAnim" parent="@android:style/Theme.Dialog">
+        <item name="android:windowEnterAnimation">@anim/go_up_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/go_up_dialog_out</item>
+    </style>
 </resources>

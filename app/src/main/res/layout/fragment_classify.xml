@@ -24,7 +24,7 @@
                     android:drawableRight="@drawable/title_classify_icon"
                     android:drawablePadding="5dp"
                     android:gravity="center"
-                    android:text="文章分类"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -53,7 +53,6 @@
                     android:id="@+id/tl_tab"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_toLeftOf="@id/child_classify_ib"
                     app:tabGravity="center"
                     app:tabIndicatorColor="@android:color/white"
                     app:tabMode="scrollable"
@@ -61,15 +60,7 @@
                     app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
                     app:tabTextColor="@color/Themecolor_200"></com.google.android.material.tabs.TabLayout>
 
-                <ImageButton
-                    android:id="@+id/child_classify_ib"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@null"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:src="@drawable/primary_classify_down_arrows_icon"
-                    android:visibility="gone" />
+
             </RelativeLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
