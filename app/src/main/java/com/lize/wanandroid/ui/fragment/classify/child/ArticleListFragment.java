@@ -61,7 +61,7 @@ public class ArticleListFragment extends LazyBaseFragment<FragmentArticleListBin
 
     @Override
     protected void onFragmentFirstVisible() {
-        classifyID = getArguments().getString("classiftID");
+        classifyID = getArguments().getString("classifyID");
         bindind.setLifecycleOwner(this);
         articleListViewModel = ViewModelProviders.of(this).get(ArticleListViewModel.class);
         bindind.articleSrl.setRefreshing(true);
@@ -73,6 +73,15 @@ public class ArticleListFragment extends LazyBaseFragment<FragmentArticleListBin
             }
         });
         articleListViewModel.getArticleList(true, classifyID);
+        articleListViewModel.getEnableLoadMore().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (loadmoreWrapper != null) {
+                    loadmoreWrapper.setEnableLoadMore(aBoolean);
+                    loadmoreWrapper.notifyDataSetChanged();
+                }
+            }
+        });
         articleListViewModel.getListMutableLiveData().observe(this, new Observer<List<ArticleBean>>() {
             @Override
             public void onChanged(List<ArticleBean> articleBeans) {
@@ -84,6 +93,7 @@ public class ArticleListFragment extends LazyBaseFragment<FragmentArticleListBin
 
     private void setupAdapter() {
         if (bindind.articleRv.getAdapter() == null) {
+
             articleListAdapter = new ArticleListAdapter(articleListViewModel.getListMutableLiveData().getValue());
             articleListAdapter.setOnItemClickListener(new ArticleListAdapter.OnItemClickListener() {
                 @Override

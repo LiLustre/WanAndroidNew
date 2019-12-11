@@ -20,14 +20,20 @@ public class ArticleListViewModel extends ViewModel {
     private ArticleModel articleModel = new ArticleModel();
     private MutableLiveData<List<ArticleBean>> listMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<Integer> curPage = new MutableLiveData<>();
+    private MutableLiveData<Boolean> enableLoadMore = new MutableLiveData<Boolean>();
     private int pageCount;
 
     public ArticleListViewModel() {
         curPage.setValue(0);
+        enableLoadMore.setValue(false);
     }
 
     public MutableLiveData<List<ArticleBean>> getListMutableLiveData() {
         return listMutableLiveData;
+    }
+
+    public MutableLiveData<Boolean> getEnableLoadMore() {
+        return enableLoadMore;
     }
 
     public void getArticleList(final boolean isRefresh, String cid) {
@@ -53,6 +59,11 @@ public class ArticleListViewModel extends ViewModel {
                         int curPageInt = curPage.getValue();
                         curPage.setValue(curPageInt + 1);
                     }
+                    if (pageCount == curPage.getValue()) {
+                        enableLoadMore.setValue(false);
+                    } else {
+                        enableLoadMore.setValue(true);
+                    }
                 }
 
                 @Override
@@ -66,7 +77,7 @@ public class ArticleListViewModel extends ViewModel {
                 }
             });
         } else {
-
+            enableLoadMore.setValue(false);
         }
     }
 

@@ -22,6 +22,7 @@ public class LoadmoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private RecyclerView.Adapter mInnerAdapter;
     private LoadMoreFooterView mLoadMoreView;
+    private boolean enableLoadMore = false;
     private Context context;
 
     private OnLoadMoreListener mOnLoadMoreListener;
@@ -33,6 +34,9 @@ public class LoadmoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     }
 
+    public void setEnableLoadMore(boolean enableLoadMore) {
+        this.enableLoadMore = enableLoadMore;
+    }
 
     private boolean hasLoadMore() {
         return mLoadMoreView != null;
@@ -65,10 +69,20 @@ public class LoadmoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (isShowLoadMore(position)) {
-            loadingMore();
-            if (mOnLoadMoreListener != null) {
-                mOnLoadMoreListener.onLoadMoreRequested();
+            if (enableLoadMore) {
+                if (mLoadMoreView != null) {
+                    mLoadMoreView.getView().setVisibility(View.VISIBLE);
+                }
+                loadingMore();
+                if (mOnLoadMoreListener != null) {
+                    mOnLoadMoreListener.onLoadMoreRequested();
+                }
+            } else {
+                if (mLoadMoreView != null) {
+                    mLoadMoreView.getView().setVisibility(View.GONE);
+                }
             }
+
             return;
         }
 
