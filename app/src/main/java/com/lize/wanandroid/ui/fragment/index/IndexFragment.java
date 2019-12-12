@@ -41,12 +41,6 @@ public class IndexFragment extends BaseFragment<FragmentIndexBinding> {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bindind.appbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                //Log.e("IndexFragment", "onOffsetChanged:verticalOffset-- "+verticalOffset );
-            }
-        });
         initChildFragment();
     }
 

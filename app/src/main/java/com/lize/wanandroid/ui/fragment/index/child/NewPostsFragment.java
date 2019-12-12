@@ -1,6 +1,8 @@
 package com.lize.wanandroid.ui.fragment.index.child;
 
 
+import android.content.Intent;
+
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +13,7 @@ import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.LazyBaseFragment;
 import com.lize.wanandroid.databinding.FragmentNewPostsBinding;
 import com.lize.wanandroid.model.article.ArticleBean;
+import com.lize.wanandroid.ui.activity.WebViewActivity;
 import com.lize.wanandroid.ui.adapter.ArticleListAdapter;
 import com.lize.wanandroid.ui.widget.recycler.loadmore.wrapper.LoadmoreWrapper;
 import com.lize.wanandroid.viewmodel.NewPostsViewModel;
@@ -72,7 +75,9 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
             articleListAdapter.setOnItemClickListener(new ArticleListAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(int pos) {
-
+                    Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                    intent.putExtra("loadUrl", newPostsViewModel.getArticleListLD().getValue().get(pos).getLink());
+                    startActivity(intent);
                 }
 
                 @Override

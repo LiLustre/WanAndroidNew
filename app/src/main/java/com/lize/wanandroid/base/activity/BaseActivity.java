@@ -28,14 +28,13 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         initView(savedInstanceState);
     }
 
+    public abstract int getLayoutId();
+
     public void init(@Nullable Bundle savedInstanceState) {
 
     }
 
     protected abstract void initView(@Nullable Bundle savedInstanceState);
-
-
-    public abstract int getLayoutId();
 
 
     public void exitApplication() {

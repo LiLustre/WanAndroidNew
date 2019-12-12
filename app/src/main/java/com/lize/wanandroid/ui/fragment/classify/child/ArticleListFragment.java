@@ -1,6 +1,7 @@
 package com.lize.wanandroid.ui.fragment.classify.child;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.lifecycle.Observer;
@@ -13,6 +14,7 @@ import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.LazyBaseFragment;
 import com.lize.wanandroid.databinding.FragmentArticleListBinding;
 import com.lize.wanandroid.model.article.ArticleBean;
+import com.lize.wanandroid.ui.activity.WebViewActivity;
 import com.lize.wanandroid.ui.adapter.ArticleListAdapter;
 import com.lize.wanandroid.ui.widget.recycler.loadmore.wrapper.LoadmoreWrapper;
 import com.lize.wanandroid.viewmodel.ArticleListViewModel;
@@ -98,7 +100,9 @@ public class ArticleListFragment extends LazyBaseFragment<FragmentArticleListBin
             articleListAdapter.setOnItemClickListener(new ArticleListAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(int pos) {
-
+                    Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                    intent.putExtra("loadUrl", articleListViewModel.getListMutableLiveData().getValue().get(pos).getLink());
+                    startActivity(intent);
                 }
 
                 @Override
