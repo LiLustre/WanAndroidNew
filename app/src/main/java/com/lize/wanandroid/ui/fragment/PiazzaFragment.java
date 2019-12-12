@@ -1,5 +1,6 @@
 package com.lize.wanandroid.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,6 +17,7 @@ import com.lize.wanandroid.databinding.FragmentPiazzaBinding;
 import com.lize.wanandroid.model.article.ArticleBean;
 import com.lize.wanandroid.model.classify.ArticleClassify;
 import com.lize.wanandroid.model.navi.Navi;
+import com.lize.wanandroid.ui.activity.WebViewActivity;
 import com.lize.wanandroid.ui.adapter.NaviDetailListAdapter;
 import com.lize.wanandroid.ui.adapter.NaviListAdapter;
 import com.lize.wanandroid.util.ValueUtil;
@@ -101,6 +103,14 @@ public class PiazzaFragment extends BaseFragment<FragmentPiazzaBinding> {
     private void initChildNaviAdapter() {
         if (naviDetailListAdapter == null) {
             naviDetailListAdapter = new NaviDetailListAdapter(curNaviDetailList);
+            naviDetailListAdapter.setOnClickListener(new NaviDetailListAdapter.OnClickListener() {
+                @Override
+                public void onItemClick(int pos) {
+                    Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                    intent.putExtra("loadUrl", curNaviDetailList.get(pos).getLink());
+                    startActivity(intent);
+                }
+            });
             bindind.naviChildRv.setAdapter(naviDetailListAdapter);
             bindind.naviChildRv.setLayoutManager(new GridLayoutManager(getContext(), 3, GridLayoutManager.VERTICAL, false));
         } else {

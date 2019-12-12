@@ -1,6 +1,7 @@
 package com.lize.wanandroid.ui.adapter;
 
 import android.graphics.drawable.GradientDrawable;
+import android.view.View;
 
 import androidx.core.content.ContextCompat;
 import androidx.databinding.ViewDataBinding;
@@ -17,19 +18,31 @@ import java.util.List;
 public class NaviDetailListAdapter extends DataBindingRecyclerAdapter {
 
     private List<ArticleBean> articleBeans;
-
+    private OnClickListener onClickListener;
     public NaviDetailListAdapter(List<ArticleBean> articleBeans) {
         this.articleBeans = articleBeans;
     }
 
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
     @Override
-    protected void onBindView(ViewDataBinding binding, int position, VH holder) {
-        NaviDetailLayoutBinding Navibinding = (NaviDetailLayoutBinding) binding;
+    protected void onBindView(ViewDataBinding binding, final int position, VH holder) {
+        NaviDetailLayoutBinding navibinding = (NaviDetailLayoutBinding) binding;
         ArticleBean articleBean = articleBeans.get(position);
         GradientDrawable drawable = (GradientDrawable) ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.navi_bg);
         drawable.setColor(ColorUtil.randomColor());
         binding.getRoot().setBackground(drawable);
-        Navibinding.detailNameTv.setText(articleBean.getTitle());
+        navibinding.detailNameTv.setText(articleBean.getTitle());
+        binding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener!=null){
+                    onClickListener.onItemClick(position);
+                }
+            }
+        });
     }
 
     @Override
@@ -40,5 +53,9 @@ public class NaviDetailListAdapter extends DataBindingRecyclerAdapter {
     @Override
     public int getItemCount() {
         return articleBeans == null ? 0 : articleBeans.size();
+    }
+
+    public interface OnClickListener{
+        void onItemClick(int pos);
     }
 }

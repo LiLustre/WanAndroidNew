@@ -28,6 +28,7 @@ import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivityMainBinding;
 import com.lize.wanandroid.databinding.ActivityWebViewBinding;
+import com.lize.wanandroid.util.ValueUtil;
 
 import java.util.List;
 
@@ -42,6 +43,12 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
         loadUrl = getIntent().getStringExtra("loadUrl");
+        binding.backIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         initWebView();
     }
 
@@ -79,6 +86,8 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 System.out.println("网页加载结束");
+                String title = view.getTitle();
+
                 binding.progressBar.setVisibility(View.GONE);
                 addOnImageOnClickListener(view);
             }
