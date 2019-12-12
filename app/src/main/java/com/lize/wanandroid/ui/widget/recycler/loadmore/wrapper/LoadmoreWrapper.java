@@ -22,7 +22,7 @@ public class LoadmoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private RecyclerView.Adapter mInnerAdapter;
     private LoadMoreFooterView mLoadMoreView;
-    private boolean enableLoadMore = false;
+    private boolean enableLoadMore = true;
     private Context context;
 
     private OnLoadMoreListener mOnLoadMoreListener;
@@ -128,7 +128,12 @@ public class LoadmoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        return mInnerAdapter.getItemCount() + (hasLoadMore() ? 1 : 0);
+        if (enableLoadMore){
+            return mInnerAdapter.getItemCount() + (hasLoadMore() ? 1 : 0);
+        }else {
+            return mInnerAdapter.getItemCount();
+        }
+
     }
 
     public LoadmoreWrapper setOnLoadMoreListener(OnLoadMoreListener loadMoreListener) {
