@@ -35,4 +35,5 @@ public interface ArticleService {
     BaseCall<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> getArticleList(@Path("page") String page, @QueryMap Map<String,String> map);
 
 
+    
 }

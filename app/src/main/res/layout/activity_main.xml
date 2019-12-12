@@ -5,16 +5,13 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activity.MainActivity"
-        >
+        tools:context=".ui.activity.MainActivity">
 
         <FrameLayout
             android:id="@+id/content_fl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/bottom_tab_ll"
-            >
-        </FrameLayout>
+            android:layout_above="@id/bottom_tab_ll"></FrameLayout>
 
         <LinearLayout
             android:id="@+id/bottom_tab_ll"
@@ -27,14 +24,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:button="@null"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="vertical"
-                app:cardBackgroundColor="@color/white"
-                android:button="@null"
                 android:onClick="onHomeClick"
-                >
+                android:orientation="vertical"
+                app:cardBackgroundColor="@color/white">
+
                 <TextView
                     android:id="@+id/home_rb"
                     android:layout_width="wrap_content"
@@ -47,7 +44,7 @@
                     android:text="首页"
                     android:textColor="@drawable/mian_bottom_tab_selector"
                     android:textSize="11dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -57,9 +54,9 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="onClassifyClick"
                 android:orientation="vertical"
-                app:cardBackgroundColor="@color/white"
-                android:onClick="onClassifyClick">
+                app:cardBackgroundColor="@color/white">
 
                 <TextView
                     android:id="@+id/classify_rb"
@@ -72,7 +69,7 @@
                     android:text="分类"
                     android:textColor="@drawable/mian_bottom_tab_selector"
                     android:textSize="11dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -82,9 +79,9 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="onSquareClick"
                 android:orientation="vertical"
-                app:cardBackgroundColor="@color/white"
-                android:onClick="onSquareClick">
+                app:cardBackgroundColor="@color/white">
 
                 <TextView
                     android:id="@+id/square_rb"
@@ -94,10 +91,10 @@
                     android:drawableTop="@drawable/home_menu_square_icon_selector"
                     android:drawablePadding="5dp"
                     android:gravity="center"
-                    android:text="广场"
+                    android:text="导航"
                     android:textColor="@drawable/mian_bottom_tab_selector"
                     android:textSize="11dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -107,9 +104,9 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="onMeClick"
                 android:orientation="vertical"
-                app:cardBackgroundColor="@color/white"
-                android:onClick="onMeClick">
+                app:cardBackgroundColor="@color/white">
 
                 <TextView
                     android:id="@+id/me_rb"

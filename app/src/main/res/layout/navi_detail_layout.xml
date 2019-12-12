@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/navi_bg"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingTop="7dp"
+        android:paddingRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginRight="7dp"
+        android:paddingBottom="7dp">
+
+        <TextView
+            android:id="@+id/detail_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="美团点评"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+    </RelativeLayout>
+</layout>
