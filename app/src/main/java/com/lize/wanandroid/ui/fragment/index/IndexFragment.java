@@ -1,5 +1,6 @@
 package com.lize.wanandroid.ui.fragment.index;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -13,6 +14,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.BaseFragment;
 import com.lize.wanandroid.databinding.FragmentIndexBinding;
+import com.lize.wanandroid.ui.activity.SearchActivity;
 import com.lize.wanandroid.ui.adapter.base.FragmentAdapter;
 import com.lize.wanandroid.ui.fragment.index.child.NewPostsFragment;
 import com.lize.wanandroid.ui.fragment.index.child.NewProjectsFragment;
@@ -42,6 +44,13 @@ public class IndexFragment extends BaseFragment<FragmentIndexBinding> {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initChildFragment();
+        bindind.searchBarLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initChildFragment() {

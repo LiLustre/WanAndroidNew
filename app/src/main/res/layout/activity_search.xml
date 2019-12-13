@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.SearchActivity">
+
+        <RelativeLayout
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/Themecolor">
+
+            <ImageButton
+                android:id="@+id/back_ib"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+
+                android:background="@null"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="onBackClick"
+                android:src="@drawable/back_icon" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/back_ib"
+                android:background="@drawable/index_search_bar_bg"
+                android:drawableLeft="@drawable/index_search_bar_icon"
+                android:gravity="center_vertical"
+                android:hint="搜索关键字以空格隔开"
+                android:lines="1"
+                android:textCursorDrawable="@drawable/search_ed_cursor"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/normal_search_bar_hint_text_color"
+                android:textSize="14dp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
