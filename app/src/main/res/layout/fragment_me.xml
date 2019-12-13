@@ -17,19 +17,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 app:contentScrim="@color/Themecolor"
-                app:expandedTitleMarginStart="100dp"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-                app:statusBarScrim="@android:color/transparent"
-                app:titleEnabled="false">
+                app:expandedTitleMarginStart="150dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
                 <RelativeLayout
+                    android:id="@+id/head_bg_rl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/Themecolor"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/app_icon"
                     app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.6">
+                    app:layout_collapseParallaxMultiplier="1.0">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -39,8 +37,8 @@
 
                         <com.lize.wanandroid.ui.widget.CircleImageView
                             android:id="@+id/iv_headimg"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
 
                             android:layout_marginLeft="15dp"
                             android:src="@drawable/head_icon" />
@@ -58,8 +56,10 @@
                                 android:layout_marginBottom="5dp"
                                 android:text="Sky_LZ"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
+                                android:textSize="18dp"
+
+                                android:textStyle="bold"
+                                app:layout_behavior="com.lize.wanandroid.ui.widget.behavior.TransferHeaderBehavior" />
 
                             <TextView
                                 android:id="@+id/total_grade_title_tv"
@@ -113,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     app:layout_collapseMode="pin"
-                    app:title="">
+                    app:title="我">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -128,6 +128,17 @@
                             android:background="@null"
                             android:foreground="?android:attr/selectableItemBackground"
                             android:src="@drawable/ranking_icon" />
+
+                        <TextView
+                            android:id="@+id/title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="我"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"
+                            android:visibility="gone"
+                            android:textStyle="bold" />
 
                         <ImageButton
                             android:id="@+id/more_ib"
@@ -166,7 +177,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
-                        android:text="收藏集"
+                        android:text="文章收藏"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
                         android:textStyle="bold">
@@ -200,7 +211,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
-                        android:text="分享文章"
+                        android:text="文章分享"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
                         android:textStyle="bold">
@@ -234,7 +245,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
-                        android:text="常用网站收藏"
+                        android:text="网站收藏"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
                         android:textStyle="bold">
@@ -268,7 +279,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
-                        android:text="分享项目"
+                        android:text="项目分享"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
                         android:textStyle="bold">
