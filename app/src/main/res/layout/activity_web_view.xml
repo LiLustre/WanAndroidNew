@@ -35,7 +35,6 @@
                     android:onClick="onBackClick"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-
                     android:src="@drawable/back_icon" />
 
                 <TextView
@@ -43,8 +42,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:layout_toRightOf="@id/back_ib"
                     android:layout_toLeftOf="@id/more_ib"
+                    android:layout_toRightOf="@id/back_ib"
                     android:drawablePadding="5dp"
                     android:ellipsize="end"
                     android:gravity="center"
@@ -59,14 +58,10 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
                     android:background="@null"
+                    android:onClick="onMoreClick"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:onClick="onBackClick"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-
-                    android:src="@drawable/article_more_icon" />
+                    android:src="@drawable/more_icon" />
             </RelativeLayout>
 
             <ProgressBar

@@ -181,6 +181,16 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
         binding.webView.loadUrl(loadUrl);
     }
 
+
+    public void onBackClick(View view){
+        finish();
+    }
+
+
+    public void onMoreClick(View view){
+
+    }
+
     private void addOnImageOnClickListener(WebView view) {
         String js = "javascript:(function(){" +
                 "var objs = document.getElementsByTagName('img'); " +
