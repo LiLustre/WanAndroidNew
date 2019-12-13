@@ -31,6 +31,7 @@
                 android:src="@drawable/back_icon" />
 
             <EditText
+                android:id="@+id/search_et"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_centerInParent="true"
@@ -40,7 +41,9 @@
                 android:drawableLeft="@drawable/index_search_bar_icon"
                 android:gravity="center_vertical"
                 android:hint="搜索关键字以空格隔开"
-                android:lines="1"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:textCursorDrawable="@drawable/search_ed_cursor"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
