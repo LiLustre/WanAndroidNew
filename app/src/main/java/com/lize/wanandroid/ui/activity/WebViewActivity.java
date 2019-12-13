@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
@@ -24,16 +26,20 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivityMainBinding;
 import com.lize.wanandroid.databinding.ActivityWebViewBinding;
+import com.lize.wanandroid.ui.widget.ArticileMenuPopuWindow;
+import com.lize.wanandroid.util.SharesUtils;
 import com.lize.wanandroid.util.ValueUtil;
 
 import java.util.List;
 
 public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
     private String loadUrl;
+    private ArticileMenuPopuWindow articileMenuPopuWindow;
 
     @Override
     public int getLayoutId() {
@@ -182,13 +188,41 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
     }
 
 
-    public void onBackClick(View view){
+    public void onBackClick(View view) {
         finish();
     }
 
 
-    public void onMoreClick(View view){
+    public void onMoreClick(View view) {
+        if (articileMenuPopuWindow == null) {
+            articileMenuPopuWindow = new ArticileMenuPopuWindow(this);
+            articileMenuPopuWindow.setListener(new ArticileMenuPopuWindow.Listener() {
+                @Override
+                public void onShare() {
+                    SharesUtils.share(WebViewActivity.this, loadUrl);
+                }
 
+                @Override
+                public void onLike() {
+
+                }
+
+                @Override
+                public void onCopy() {
+                    ClipboardManager cbm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    cbm.setPrimaryClip(ClipData.newPlainText("复制链接", loadUrl));
+                    Snackbar.make(getWindow().getDecorView(), "链接已复制", Snackbar.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onOpenWeb() {
+                    Uri uri = Uri.parse(binding.webView.getUrl());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }
+            });
+        }
+        articileMenuPopuWindow.showAsDropDown(view);
     }
 
     private void addOnImageOnClickListener(WebView view) {
