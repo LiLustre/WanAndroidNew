@@ -75,7 +75,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/user_name_tv"
-                                android:layout_marginLeft="10dp"
+                                android:layout_marginLeft="7dp"
                                 android:layout_toRightOf="@id/total_grade_title_tv"
                                 android:text="100"
                                 android:textColor="@color/white"
@@ -86,7 +86,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/user_name_tv"
-                                android:layout_marginLeft="30dp"
+                                android:layout_marginLeft="20dp"
                                 android:layout_toRightOf="@id/total_grade_tv"
                                 android:text="排行"
                                 android:textColor="@color/com_line_color"
@@ -97,7 +97,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/user_name_tv"
-                                android:layout_marginLeft="10dp"
+                                android:layout_marginLeft="7dp"
                                 android:layout_toRightOf="@id/ranking_title_tv"
                                 android:text="50"
                                 android:textColor="@color/white"
@@ -137,8 +137,8 @@
                             android:text="我"
                             android:textColor="@color/white"
                             android:textSize="15dp"
-                            android:visibility="gone"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:visibility="gone" />
 
                         <ImageButton
                             android:id="@+id/more_ib"
@@ -180,6 +180,46 @@
                         android:text="文章收藏"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/article_like_icon"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="13dp"
+                        android:src="@drawable/next_icon"></ImageView>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/com_line_color" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:text="网站收藏"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/website_like_icon"
+                        android:textColor="@color/black_text_color"
+                        android:textSize="15dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -214,7 +254,11 @@
                         android:text="文章分享"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold">
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/article_share_icon"
+                        >
 
                     </TextView>
 
@@ -233,44 +277,10 @@
                     android:layout_marginLeft="15dp"
                     android:background="@color/com_line_color" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="15dp"
-                        android:text="网站收藏"
-                        android:textColor="@color/black_text_color"
-                        android:textSize="15dp"
-                        android:textStyle="bold">
-
-                    </TextView>
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="13dp"
-                        android:src="@drawable/next_icon"></ImageView>
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_marginLeft="15dp"
-                    android:background="@color/com_line_color" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
                     android:background="@color/white">
 
                     <TextView
@@ -282,7 +292,11 @@
                         android:text="项目分享"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold">
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/project_share_icon"
+                        >
 
                     </TextView>
 
@@ -310,7 +324,11 @@
                         android:text="TODO"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold">
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/todo_icon"
+                        >
 
                     </TextView>
 
@@ -344,7 +362,11 @@
                         android:text="公众号"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold">
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/official_account_icon"
+                        >
 
                     </TextView>
 
@@ -384,7 +406,11 @@
                         android:text="关于我们"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold">
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/about_icon"
+                        >
 
                     </TextView>
 
