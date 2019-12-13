@@ -33,6 +33,7 @@ import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivityMainBinding;
 import com.lize.wanandroid.databinding.ActivityWebViewBinding;
 import com.lize.wanandroid.ui.widget.ArticileMenuPopuWindow;
+import com.lize.wanandroid.ui.widget.dialog.PhotoViewDialog;
 import com.lize.wanandroid.util.SharesUtils;
 import com.lize.wanandroid.util.ValueUtil;
 
@@ -41,6 +42,7 @@ import java.util.List;
 public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
     private String loadUrl;
     private ArticileMenuPopuWindow articileMenuPopuWindow;
+    PhotoViewDialog photoViewDialog;
 
     @Override
     public int getLayoutId() {
@@ -60,6 +62,9 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
     }
 
     private void initWebView() {
+        binding.webView.addJavascriptInterface(
+                new MJavascriptInterface(getApplicationContext(), null), "imagelistener"
+        );
         WebSettings settings = binding.webView.getSettings();
         settings.setJavaScriptEnabled(true);// 支持JS
         settings.setBuiltInZoomControls(true);// 显示放大缩小按钮
@@ -93,8 +98,6 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 System.out.println("网页加载结束");
-                String title = view.getTitle();
-
                 binding.progressBar.setVisibility(View.GONE);
                 addOnImageOnClickListener(view);
             }
@@ -246,7 +249,7 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
                 "    }  " +
                 "}" +
                 "})()";
-        // view.loadUrl(js);
+        view.loadUrl(js);
     }
 
     //通过浏览器下载
@@ -294,8 +297,20 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
         }
 
         @android.webkit.JavascriptInterface
-        public void openImage(String img) {
+        public void openImage(final String img) {
             System.out.println("openImage:=" + img);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (photoViewDialog == null) {
+                        photoViewDialog = new PhotoViewDialog(WebViewActivity.this, R.style.Dialog, img);
+                    } else {
+                        photoViewDialog.setUrl(img);
+                    }
+                    photoViewDialog.show();
+                }
+            });
+
             // PhotoBowerActivity.runActivity(ArticleDetailActivity.this,img);
             /*Intent intent = new Intent();
             intent.putExtra("imageUrls", imageUrls);
