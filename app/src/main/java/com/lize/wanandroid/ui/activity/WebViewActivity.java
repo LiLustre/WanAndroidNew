@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -103,9 +104,8 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
              */
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //view.loadUrl(url);
+                WebView.HitTestResult hitTestResult = view.getHitTestResult();
                 try {
-                    Log.i("跳转url", url);
                     if (!url.startsWith("http") && !url.startsWith("https") && !url.startsWith("intent://")) {
                         try {
                             // 以下固定写法
@@ -140,9 +140,19 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
                         return true;
 
                     } else {
-                        view.loadUrl(url);
+                        /*
+                         * WebView有一个getHitTestResult():返回的是一个HitTestResult，一般会根据打开的链接的类型，返回一个extra的信息，
+                         * 如果打开链接不是一个url，或者打开的链接是JavaScript的url，他的类型是UNKNOWN_TYPE，这个url就会通过requestFocusNodeHref(Message)异步重定向。
+                         * 返回的extra为null，或者没有返回extra。根据此方法的返回值，判断是否为null，可以用于解决网页重定向问题。
+                         * */
+                        if (!TextUtils.isEmpty(url) && hitTestResult == null) {
+                            view.loadUrl(url);
+                            return true;
+                        }
+
                     }
                 } catch (Exception e) {
+
                 }
                 return super.shouldOverrideUrlLoading(view, url);
             }
@@ -263,7 +273,6 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding> {
         if (binding.webView != null) {
             binding.webView.clearCache(true);
             binding.webView.setDownloadListener(null);
-            binding.webView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
             binding.webView.clearHistory();
             ((ViewGroup) binding.webView.getParent()).removeView(binding.webView);
             binding.webView.destroy();
