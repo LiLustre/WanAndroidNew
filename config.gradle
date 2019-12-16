@@ -7,6 +7,7 @@ ext {
 
     isMinifyEnabled = false
     dataBindingEnable = true
+    dbVersion = 1
     versions = [
             applicationId            : "com.lize.wanandroid",        //应用ID
             versionCode              : 1,                    //版本号

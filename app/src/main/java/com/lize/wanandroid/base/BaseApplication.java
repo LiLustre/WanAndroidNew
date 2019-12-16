@@ -7,6 +7,11 @@ import android.os.Bundle;
 
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.base.checker.ApplicationChecker;
+import com.lize.wanandroid.greendao.SqliteDaoMasterHelper;
+import com.lize.wanandroid.model.search.DaoMaster;
+import com.lize.wanandroid.model.search.DaoSession;
+
+import org.greenrobot.greendao.database.Database;
 
 import java.util.ArrayList;
 
@@ -17,6 +22,8 @@ import java.util.ArrayList;
 public class BaseApplication extends Application implements Application.ActivityLifecycleCallbacks {
     public static Context applicationContext;
     private ArrayList<Activity> activities;
+    public static final boolean ENCRYPTED = false;
+    private DaoSession daoSession;
 
     @Override
     public void onCreate() {
@@ -24,10 +31,27 @@ public class BaseApplication extends Application implements Application.Activity
         ApplicationChecker.markApplicationCreated();
         initAppConfig();
         initActivityBackRecordStack();
+        initDataBase();
     }
 
     private void initAppConfig() {
         applicationContext = getApplicationContext();
+    }
+
+
+
+    /**
+     * 初始化数据库
+     */
+    private void initDataBase() {
+
+        DaoMaster.DevOpenHelper helper = new SqliteDaoMasterHelper(this, ENCRYPTED ? "wanandroid-db-encrypted" : "wanandroid-db");
+        Database db = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
+        daoSession = new DaoMaster(db).newSession();
+    }
+
+    public DaoSession getDaoSession() {
+        return daoSession;
     }
 
     /**
@@ -50,6 +74,7 @@ public class BaseApplication extends Application implements Application.Activity
             }
         }
     }
+
     public void exitApplication() {
         for (int i = activities.size() - 1; i >= 0; i--) {
             Activity activity = activities.get(i);
@@ -58,14 +83,17 @@ public class BaseApplication extends Application implements Application.Activity
         activities.clear();
         killProcess();
     }
+
     @Override
     public void onTerminate() {
         super.onTerminate();
         unregisterActivityLifecycleCallbacks(this);
     }
+
     public void killProcess() {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
+
     //---------------------------------Activity生命周期监听--------------------------------------
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {

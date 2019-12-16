@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/search_history_item_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/history_key_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxEms="10"
+            android:paddingLeft="13dp"
+            android:paddingTop="5dp"
+            android:paddingRight="13dp"
+            android:paddingBottom="5dp"
+            android:text="Andrid"
+            android:textColor="@color/grey_text_color"
+            android:textSize="14dp" />
+
+
+    </RelativeLayout>
+</layout>

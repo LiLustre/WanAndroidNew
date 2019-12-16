@@ -10,6 +10,7 @@ import androidx.databinding.ViewDataBinding;
 
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.BaseApplication;
+import com.lize.wanandroid.model.search.DaoSession;
 import com.lize.wanandroid.util.statusbar.StatusBarCompat;
 
 /**
@@ -55,6 +56,11 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
      */
     public void backToMainActivity() {
         ((BaseApplication) getApplication()).backToMainActivity();
+    }
+
+
+    public DaoSession getDaoSession() {
+        return ((BaseApplication) getApplication()).getDaoSession();
     }
 
 }
