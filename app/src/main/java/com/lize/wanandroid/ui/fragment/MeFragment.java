@@ -1,5 +1,6 @@
 package com.lize.wanandroid.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,6 +12,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.BaseFragment;
 import com.lize.wanandroid.databinding.FragmentMeBinding;
+import com.lize.wanandroid.ui.activity.LoginActivity;
 
 /**
  * @author Lize
@@ -64,6 +66,12 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
                 }
             }
         });
-
+        bindind.userNameTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
