@@ -1,4 +1,4 @@
-package com.lize.wanandroid.http.retrofit;
+package com.lize.wanandroid.http.retrofit.callback;
 
 
 import retrofit2.Call;
@@ -35,9 +35,9 @@ public abstract class BaseCallback<T> implements Callback<T> {
 
     public abstract void onSuccess(Call<T> call, Response<T> response);
 
-    public abstract void onError(Call<T> call, Throwable error);
-
     public abstract void onFailed(Call<T> call, Response<T> response);
+
+    public abstract void onError(Call<T> call, Throwable error);
 
     public void onCancele(Call<T> call) {
 

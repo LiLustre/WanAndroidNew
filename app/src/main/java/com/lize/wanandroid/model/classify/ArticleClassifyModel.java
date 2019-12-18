@@ -2,7 +2,7 @@ package com.lize.wanandroid.model.classify;
 
 import com.lize.wanandroid.http.WanAndroidRespone;
 import com.lize.wanandroid.http.request.ArticleClassifyRequest;
-import com.lize.wanandroid.http.retrofit.BaseCallback;
+import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
 
 import java.util.List;
 

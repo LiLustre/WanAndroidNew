@@ -1,10 +1,8 @@
 package com.lize.wanandroid.model.navi;
 
 import com.lize.wanandroid.http.WanAndroidRespone;
-import com.lize.wanandroid.http.request.ArticleClassifyRequest;
 import com.lize.wanandroid.http.request.NaviRequest;
-import com.lize.wanandroid.http.retrofit.BaseCallback;
-import com.lize.wanandroid.model.classify.ArticleClassify;
+import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
 
 import java.util.List;
 

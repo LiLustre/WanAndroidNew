@@ -2,11 +2,9 @@ package com.lize.wanandroid.http.request;
 
 import com.lize.wanandroid.config.URLConfig;
 import com.lize.wanandroid.http.WanAndroidRespone;
-import com.lize.wanandroid.http.retrofit.BaseCallback;
+import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
 import com.lize.wanandroid.http.retrofit.HttpManager;
 import com.lize.wanandroid.http.service.ArticleClassifyService;
-import com.lize.wanandroid.http.service.ArticleService;
-import com.lize.wanandroid.model.article.ArticleBean;
 import com.lize.wanandroid.model.classify.ArticleClassify;
 
 import java.util.List;

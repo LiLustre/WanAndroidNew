@@ -3,12 +3,10 @@ package com.lize.wanandroid.http.request;
 import com.lize.wanandroid.config.URLConfig;
 import com.lize.wanandroid.http.WanAndroidPageData;
 import com.lize.wanandroid.http.WanAndroidRespone;
-import com.lize.wanandroid.http.retrofit.BaseCallback;
+import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
 import com.lize.wanandroid.http.retrofit.HttpManager;
-import com.lize.wanandroid.http.service.NaviService;
 import com.lize.wanandroid.http.service.SearchService;
 import com.lize.wanandroid.model.article.ArticleBean;
-import com.lize.wanandroid.model.navi.Navi;
 import com.lize.wanandroid.model.search.HotKey;
 import com.lize.wanandroid.util.ValueUtil;
 

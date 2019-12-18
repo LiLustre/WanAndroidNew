@@ -2,18 +2,11 @@ package com.lize.wanandroid.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.lize.wanandroid.http.ErrorCode;
-import com.lize.wanandroid.http.WanAndroidPageData;
-import com.lize.wanandroid.http.WanAndroidRespone;
-import com.lize.wanandroid.http.retrofit.BaseCallback;
 import com.lize.wanandroid.model.article.ArticleBean;
 import com.lize.wanandroid.model.article.ArticleModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Response;
 
 /**
  * @author Lize

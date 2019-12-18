@@ -1,10 +1,10 @@
 package com.lize.wanandroid.model.article;
 
-import com.lize.wanandroid.http.ErrorCode;
+import com.lize.wanandroid.http.error.ErrorCode;
 import com.lize.wanandroid.http.WanAndroidPageData;
 import com.lize.wanandroid.http.WanAndroidRespone;
 import com.lize.wanandroid.http.request.ArticleRequest;
-import com.lize.wanandroid.http.retrofit.BaseCallback;
+import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
 
 import java.util.ArrayList;
 import java.util.List;

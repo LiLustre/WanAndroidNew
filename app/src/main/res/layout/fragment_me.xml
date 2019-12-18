@@ -54,7 +54,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
-                                android:text="Sky_LZ"
+                                android:text="点击登录"
                                 android:textColor="@color/white"
                                 android:textSize="18dp"
 
@@ -77,7 +77,7 @@
                                 android:layout_below="@id/user_name_tv"
                                 android:layout_marginLeft="7dp"
                                 android:layout_toRightOf="@id/total_grade_title_tv"
-                                android:text="100"
+                                android:text="--"
                                 android:textColor="@color/white"
                                 android:textSize="12dp" />
 
@@ -99,7 +99,7 @@
                                 android:layout_below="@id/user_name_tv"
                                 android:layout_marginLeft="7dp"
                                 android:layout_toRightOf="@id/ranking_title_tv"
-                                android:text="50"
+                                android:text="--"
                                 android:textColor="@color/white"
                                 android:textSize="12dp" />
                         </RelativeLayout>
@@ -177,12 +177,12 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
+                        android:drawableLeft="@drawable/article_like_icon"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
                         android:text="文章收藏"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/article_like_icon"
                         android:textStyle="bold">
 
                     </TextView>
@@ -214,10 +214,10 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
-                        android:text="网站收藏"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="10dp"
                         android:drawableLeft="@drawable/website_like_icon"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:text="网站收藏"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
                         android:textStyle="bold">
@@ -251,14 +251,13 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
+                        android:drawableLeft="@drawable/article_share_icon"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
                         android:text="文章分享"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/article_share_icon"
-                        >
+                        android:textStyle="bold">
 
                     </TextView>
 
@@ -289,14 +288,13 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
+                        android:drawableLeft="@drawable/project_share_icon"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
                         android:text="项目分享"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/project_share_icon"
-                        >
+                        android:textStyle="bold">
 
                     </TextView>
 
@@ -321,14 +319,13 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
+                        android:drawableLeft="@drawable/todo_icon"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
                         android:text="TODO"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/todo_icon"
-                        >
+                        android:textStyle="bold">
 
                     </TextView>
 
@@ -359,14 +356,13 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
+                        android:drawableLeft="@drawable/official_account_icon"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
                         android:text="公众号"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/official_account_icon"
-                        >
+                        android:textStyle="bold">
 
                     </TextView>
 
@@ -403,14 +399,13 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
+                        android:drawableLeft="@drawable/about_icon"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
                         android:text="关于我们"
                         android:textColor="@color/black_text_color"
                         android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/about_icon"
-                        >
+                        android:textStyle="bold">
 
                     </TextView>
 

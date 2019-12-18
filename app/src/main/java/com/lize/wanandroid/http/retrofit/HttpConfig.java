@@ -1,5 +1,9 @@
 package com.lize.wanandroid.http.retrofit;
 
+import com.lize.wanandroid.base.BaseApplication;
+import com.lize.wanandroid.http.cookie.CookieManager;
+import com.lize.wanandroid.http.cookie.store.SPCookieStore;
+import com.lize.wanandroid.http.retrofit.interceptor.AuthInterceptor;
 import com.lize.wanandroid.util.LogUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -35,7 +39,9 @@ public class HttpConfig {
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
                 .addInterceptor(loggInterceptor)
+                .addInterceptor(new AuthInterceptor())
                 .retryOnConnectionFailure(true)
+                .cookieJar(new CookieManager(new SPCookieStore(BaseApplication.applicationContext)))
                 .build();
         return okHttpClient;
     }

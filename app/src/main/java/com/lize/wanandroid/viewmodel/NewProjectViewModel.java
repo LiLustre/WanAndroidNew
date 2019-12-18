@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.lize.wanandroid.http.WanAndroidPageData;
 import com.lize.wanandroid.http.WanAndroidRespone;
-import com.lize.wanandroid.http.retrofit.BaseCallback;
+import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
 import com.lize.wanandroid.model.article.ArticleBean;
 import com.lize.wanandroid.model.article.ArticleModel;
 
