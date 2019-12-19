@@ -5,7 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.lize.wanandroid.model.search.DaoMaster;
-import com.lize.wanandroid.model.search.SerachHistoryDao;
+import com.lize.wanandroid.model.search.SearchHistoryDao;
+
 
 import org.greenrobot.greendao.database.Database;
 
@@ -26,6 +27,7 @@ public class SqliteDaoMasterHelper extends DaoMaster.DevOpenHelper {
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
         Log.i(TAG,"oldVersion:"+oldVersion+"----newVersion:"+newVersion);
-        MigrationHelper.migrate(db, SerachHistoryDao.class);
+
+        MigrationHelper.migrate(db, SearchHistoryDao.class);
     }
 }
