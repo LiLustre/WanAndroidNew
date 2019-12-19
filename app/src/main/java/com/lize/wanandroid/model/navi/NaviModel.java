@@ -1,8 +1,8 @@
 package com.lize.wanandroid.model.navi;
 
-import com.lize.wanandroid.http.WanAndroidRespone;
-import com.lize.wanandroid.http.request.NaviRequest;
-import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
+import com.lize.wanandroid.core.http.WanAndroidRespone;
+import com.lize.wanandroid.core.http.request.NaviRequest;
+import com.lize.wanandroid.core.http.retrofit.callback.BaseCallback;
 
 import java.util.List;
 

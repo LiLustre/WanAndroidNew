@@ -2,10 +2,10 @@ package com.lize.wanandroid.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.lize.wanandroid.http.WanAndroidRespone;
-import com.lize.wanandroid.http.error.HttpResErrorPaser;
-import com.lize.wanandroid.http.request.UserLoginRequest;
-import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
+import com.lize.wanandroid.core.http.WanAndroidRespone;
+import com.lize.wanandroid.core.http.error.HttpResErrorPaser;
+import com.lize.wanandroid.core.http.request.UserLoginRequest;
+import com.lize.wanandroid.core.http.retrofit.callback.BaseCallback;
 import com.lize.wanandroid.model.login.User;
 import com.lize.wanandroid.model.login.UserManager;
 

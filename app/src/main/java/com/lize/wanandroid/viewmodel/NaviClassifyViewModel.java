@@ -2,9 +2,9 @@ package com.lize.wanandroid.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.lize.wanandroid.http.error.ErrorCode;
-import com.lize.wanandroid.http.WanAndroidRespone;
-import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
+import com.lize.wanandroid.core.http.error.ErrorCode;
+import com.lize.wanandroid.core.http.WanAndroidRespone;
+import com.lize.wanandroid.core.http.retrofit.callback.BaseCallback;
 import com.lize.wanandroid.model.navi.Navi;
 import com.lize.wanandroid.model.navi.NaviModel;
 

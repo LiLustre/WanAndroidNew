@@ -1,9 +1,9 @@
 package com.lize.wanandroid.model.search;
 
-import com.lize.wanandroid.http.WanAndroidPageData;
-import com.lize.wanandroid.http.WanAndroidRespone;
-import com.lize.wanandroid.http.request.SearchRequest;
-import com.lize.wanandroid.http.retrofit.callback.BaseCallback;
+import com.lize.wanandroid.core.http.WanAndroidPageData;
+import com.lize.wanandroid.core.http.WanAndroidRespone;
+import com.lize.wanandroid.core.http.request.SearchRequest;
+import com.lize.wanandroid.core.http.retrofit.callback.BaseCallback;
 import com.lize.wanandroid.model.article.ArticleBean;
 
 import java.util.List;
