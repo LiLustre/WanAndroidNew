@@ -20,6 +20,7 @@ import com.lize.wanandroid.databinding.FragmentMeBinding;
 import com.lize.wanandroid.model.login.UserManager;
 import com.lize.wanandroid.model.user.UserInfo;
 import com.lize.wanandroid.ui.activity.LoginActivity;
+import com.lize.wanandroid.ui.activity.SettingActivity;
 import com.lize.wanandroid.viewmodel.MeViewModel;
 
 /**
@@ -56,6 +57,13 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        bindind.settingIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+            }
+        });
         userManager = new UserManager();
         meViewModel = ViewModelProviders.of(this).get(MeViewModel.class);
         bindind.appbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {

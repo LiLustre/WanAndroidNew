@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="status_bar_color">#007FFF</color>
+    <!--页面背景色-->
+    <color name="page_bg_color">#f7f7f7</color>
     <color name="Themecolor">#007FFF</color>
     <color name="Themecolor_200">#88C3FF</color>
     <color name="normal_search_bar_bg_color">#3399FF</color>

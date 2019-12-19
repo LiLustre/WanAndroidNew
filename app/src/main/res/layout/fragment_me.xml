@@ -124,7 +124,7 @@
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
 
-                            android:layout_toLeftOf="@id/more_ib"
+                            android:layout_toLeftOf="@id/setting_ib"
                             android:background="@null"
                             android:foreground="?android:attr/selectableItemBackground"
                             android:src="@drawable/ranking_icon" />
@@ -141,7 +141,7 @@
                             android:visibility="gone" />
 
                         <ImageButton
-                            android:id="@+id/more_ib"
+                            android:id="@+id/setting_ib"
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
                             android:layout_alignParentRight="true"

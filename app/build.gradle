@@ -88,4 +88,6 @@ dependencies {
     implementation rootProject.ext.dependencies["greendao"]
 
 
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }
