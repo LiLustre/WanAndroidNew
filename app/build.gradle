@@ -80,12 +80,12 @@ dependencies {
     implementation rootProject.ext.dependencies["retrofitConverterGson"]
     implementation rootProject.ext.dependencies["okhttpLogInerceptor"]
     implementation rootProject.ext.dependencies["eventBus"]
+    //https://github.com/google/flexbox-layout
+    implementation rootProject.ext.dependencies["flexbox"]
+    implementation rootProject.ext.dependencies["constraintlayout"]
+    //photoView https://github.com/chrisbanes/PhotoView
+    implementation rootProject.ext.dependencies["photoview"]
+    implementation rootProject.ext.dependencies["greendao"]
 
-    implementation 'com.google.android:flexbox:0.3.0-alpha2'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    //photoView
-    implementation 'com.github.chrisbanes:PhotoView:2.1.3'
-    implementation 'org.greenrobot:greendao:3.2.2'
 
 }

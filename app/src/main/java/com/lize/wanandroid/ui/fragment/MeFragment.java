@@ -82,7 +82,7 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
         bindind.userNameTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userManager.getLoginStatus()) {
+                if (UserManager.getInstance().getLoginStatus()) {
                 } else {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);

@@ -181,12 +181,8 @@ public class SearchActivity extends BaseActivity<ActivitySearchBinding> {
                     searchArticle(key, true);
                 }
             });
-            FlexboxLayoutManager flexboxLayoutManager = new FlexboxLayoutManager();
-            //flexDirection 属性决定主轴的方向（即项目的排列方向）。类似 LinearLayout 的 vertical 和 horizontal。
-            flexboxLayoutManager.setFlexDirection(FlexDirection.ROW);//主轴为水平方向，起点在左端。
-            //flexWrap 默认情况下 Flex 跟 LinearLayout 一样，都是不带换行排列的，但是flexWrap属性可以支持换行排列。
-            flexboxLayoutManager.setFlexWrap(FlexWrap.WRAP);//按正常方向换行
-            //justifyContent 属性定义了项目在主轴上的对齐方式。
+            FlexboxLayoutManager flexboxLayoutManager = new FlexboxLayoutManager(this,FlexDirection.ROW,FlexWrap.WRAP);
+
             flexboxLayoutManager.setJustifyContent(JustifyContent.FLEX_START);//交叉轴的起点对齐。
             binding.searchHistoryRv.setLayoutManager(flexboxLayoutManager);
             binding.searchHistoryRv.setAdapter(searchHistoryAdapter);

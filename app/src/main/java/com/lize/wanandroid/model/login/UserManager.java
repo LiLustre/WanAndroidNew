@@ -5,10 +5,24 @@ import com.lize.wanandroid.constants.UserConstants;
 import com.lize.wanandroid.preferencehelper.PreferenceHelper;
 
 public class UserManager {
+
+    private static UserManager instance;
+
     private String userName;
     private String pwd;
     private User user;
     private boolean loginStatus;
+
+    public static UserManager getInstance() {
+        if (instance==null){
+            synchronized (UserManager.class){
+                if (instance==null){
+                    instance = new UserManager();
+                }
+            }
+        }
+        return instance;
+    }
 
     public void saveAccount(String account) {
         this.userName = account;

@@ -14,7 +14,10 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.BaseFragment;
 import com.lize.wanandroid.databinding.FragmentIndexBinding;
+import com.lize.wanandroid.model.login.UserManager;
+import com.lize.wanandroid.ui.activity.LoginActivity;
 import com.lize.wanandroid.ui.activity.SearchActivity;
+import com.lize.wanandroid.ui.activity.ToDoActivity;
 import com.lize.wanandroid.ui.adapter.base.FragmentAdapter;
 import com.lize.wanandroid.ui.fragment.index.child.NewPostsFragment;
 import com.lize.wanandroid.ui.fragment.index.child.NewProjectsFragment;
@@ -41,6 +44,11 @@ public class IndexFragment extends BaseFragment<FragmentIndexBinding> {
     }
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_index;
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initChildFragment();
@@ -49,6 +57,18 @@ public class IndexFragment extends BaseFragment<FragmentIndexBinding> {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SearchActivity.class);
                 startActivity(intent);
+            }
+        });
+        bindind.waitDoIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (UserManager.getInstance().getLoginStatus()) {
+                    Intent intent = new Intent(getActivity(), ToDoActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -69,8 +89,5 @@ public class IndexFragment extends BaseFragment<FragmentIndexBinding> {
         }
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_index;
-    }
+
 }

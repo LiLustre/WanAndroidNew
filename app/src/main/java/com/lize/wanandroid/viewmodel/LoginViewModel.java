@@ -17,7 +17,7 @@ import retrofit2.Response;
 public class LoginViewModel extends IBaseViewModel {
     private UserLoginRequest loginRequest;
 
-    private UserManager userManager = new UserManager();
+
     public MutableLiveData<User> loginResultLiveData = new MutableLiveData<User>();
     public MutableLiveData<String> loginErrMsg = new MutableLiveData<String>();
     public MutableLiveData<String> account = new MutableLiveData<String>();
@@ -25,8 +25,8 @@ public class LoginViewModel extends IBaseViewModel {
 
     public LoginViewModel() {
         this.loginRequest = new UserLoginRequest();
-        account.setValue(userManager.getAccount());
-        pwd.setValue(userManager.getPwd());
+        account.setValue(UserManager.getInstance().getAccount());
+        pwd.setValue(UserManager.getInstance().getPwd());
     }
 
     public void login(String userName, final String pwd) {
@@ -38,10 +38,10 @@ public class LoginViewModel extends IBaseViewModel {
                         if (response.body().getErrorCode() == 0) {
                             User user = response.body().getData();
                             if (user != null) {
-                                userManager.saveAccount(user.getUsername());
-                                userManager.savePwd(pwd);
-                                userManager.saveLoginStatus(true);
-                                userManager.saveUser(user);
+                                UserManager.getInstance().saveAccount(user.getUsername());
+                                UserManager.getInstance().savePwd(pwd);
+                                UserManager.getInstance().saveLoginStatus(true);
+                                UserManager.getInstance().saveUser(user);
                             }
                             loginResultLiveData.setValue(user);
                         } else {

@@ -15,15 +15,14 @@ import retrofit2.Response;
 public class MeViewModel extends IBaseViewModel {
     public MutableLiveData<String> nickName = new MutableLiveData<>();
     public MutableLiveData<UserInfo> userInfo = new MutableLiveData<>();
-    private UserManager userManager;
     private UserInfoModel userInfoModel;
 
     public MeViewModel() {
         userInfoModel = new UserInfoModel();
-        userManager = new UserManager();
-        if (userManager.getLoginStatus()) {
-            if (userManager.getUser() != null) {
-                nickName.setValue(userManager.getUser().getNickname());
+
+        if (UserManager.getInstance().getLoginStatus()) {
+            if (UserManager.getInstance().getUser() != null) {
+                nickName.setValue(UserManager.getInstance().getUser().getNickname());
             } else {
             }
         } else {
