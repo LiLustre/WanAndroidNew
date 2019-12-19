@@ -423,6 +423,29 @@
                     android:layout_height="1px"
                     android:layout_marginLeft="15dp"
                     android:background="@color/com_line_color" />
+
+                <RelativeLayout
+                    android:id="@+id/logout_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="15dp"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:text="退出账号"
+                        android:textColor="@color/black_text_color"
+                        android:textSize="15dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </RelativeLayout>
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

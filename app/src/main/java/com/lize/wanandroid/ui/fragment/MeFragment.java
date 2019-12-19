@@ -30,7 +30,7 @@ import com.lize.wanandroid.viewmodel.MeViewModel;
 public class MeFragment extends BaseFragment<FragmentMeBinding> {
 
     private MeViewModel meViewModel;
-    private UserManager userManager;
+
     private State state;
 
     public enum State {
@@ -64,8 +64,18 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
                 startActivity(intent);
             }
         });
-        userManager = new UserManager();
+
         meViewModel = ViewModelProviders.of(this).get(MeViewModel.class);
+        meViewModel.userLoginStatus.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    bindind.logoutRl.setVisibility(View.VISIBLE);
+                } else {
+                    bindind.logoutRl.setVisibility(View.GONE);
+                }
+            }
+        });
         bindind.appbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
@@ -98,6 +108,7 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
 
             }
         });
+
         meViewModel.nickName.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -114,5 +125,14 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
             }
         });
         meViewModel.getUserInfo();
+
+        bindind.logoutRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                meViewModel.logout();
+            }
+        });
     }
+
+
 }

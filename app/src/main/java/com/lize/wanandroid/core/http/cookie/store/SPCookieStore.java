@@ -98,6 +98,7 @@ public class SPCookieStore implements CookieStore {
 
     @Override
     public synchronized void saveCookie(HttpUrl url, Cookie cookie) {
+
         if (!cookies.containsKey(url.host())) {
             cookies.put(url.host(), new ConcurrentHashMap<String, Cookie>());
         }

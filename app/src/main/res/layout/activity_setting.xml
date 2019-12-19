@@ -99,7 +99,15 @@
                 android:textSize="15dp"
                 android:textColor="@color/common_text_color"
                 />
-
+            <Switch
+                android:id="@+id/no_image_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:onClick="onNoImageBtnClick"
+                />
         </RelativeLayout>
         <View
             android:layout_width="match_parent"

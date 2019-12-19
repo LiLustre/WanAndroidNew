@@ -9,6 +9,7 @@ import android.view.View;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivitySettingBinding;
+import com.lize.wanandroid.model.setting.SettingManager;
 import com.lize.wanandroid.util.CacheUtil;
 
 public class SettingActivity extends BaseActivity<ActivitySettingBinding> {
@@ -21,11 +22,17 @@ public class SettingActivity extends BaseActivity<ActivitySettingBinding> {
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
         binding.cacheSizeTv.setText(CacheUtil.getCacheSize(this));
+        binding.noImageSwitch.setChecked(SettingManager.getInstance().getNoImageModel());
     }
 
     public void onBackClick(View view) {
         finish();
 
+    }
+
+    public void onNoImageBtnClick(View view) {
+
+        SettingManager.getInstance().setNoImageModel(!SettingManager.getInstance().getNoImageModel());
     }
 
     public void onCacheClick(View view) {

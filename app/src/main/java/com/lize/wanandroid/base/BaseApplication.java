@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.facebook.stetho.Stetho;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.base.checker.ApplicationChecker;
 import com.lize.wanandroid.core.greendao.SqliteDaoMasterHelper;
@@ -32,6 +33,7 @@ public class BaseApplication extends Application implements Application.Activity
         initAppConfig();
         initActivityBackRecordStack();
         initDataBase();
+        Stetho.initializeWithDefaults(this);
     }
 
     private void initAppConfig() {

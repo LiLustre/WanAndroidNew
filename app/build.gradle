@@ -86,8 +86,8 @@ dependencies {
     //photoView https://github.com/chrisbanes/PhotoView
     implementation rootProject.ext.dependencies["photoview"]
     implementation rootProject.ext.dependencies["greendao"]
-
-
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation 'com.facebook.stetho:stetho:1.3.1'
 }

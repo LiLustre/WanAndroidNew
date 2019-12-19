@@ -14,9 +14,9 @@ public class UserManager {
     private boolean loginStatus;
 
     public static UserManager getInstance() {
-        if (instance==null){
-            synchronized (UserManager.class){
-                if (instance==null){
+        if (instance == null) {
+            synchronized (UserManager.class) {
+                if (instance == null) {
                     instance = new UserManager();
                 }
             }
@@ -39,6 +39,14 @@ public class UserManager {
         PreferenceHelper.getInstance().putAppBoolean(UserConstants.LOGIN_STATUS, loginStatus);
     }
 
+    public void logout() {
+        loginStatus = false;
+        saveLoginStatus(loginStatus);
+        user = null;
+        saveUser(null);
+
+    }
+
     public boolean getLoginStatus() {
         if (loginStatus) {
             return loginStatus;
@@ -49,10 +57,12 @@ public class UserManager {
 
     public void saveUser(User user) {
         this.user = user;
+        String userStr = null;
         if (user != null) {
-            String userStr = new GsonBuilder().create().toJson(user);
-            PreferenceHelper.getInstance().putAppString(UserConstants.USER, userStr);
+            userStr = new GsonBuilder().create().toJson(user);
         }
+        PreferenceHelper.getInstance().putAppString(UserConstants.USER, userStr);
+
     }
 
     public User getUser() {

@@ -15,6 +15,7 @@ public class UserLoginRequest {
 
     /**
      * 登录
+     *
      * @param userName
      * @param pwd
      * @param callback
@@ -33,4 +34,16 @@ public class UserLoginRequest {
                 .enqueue(callback);
     }
 
+
+    /**
+     * 退出登录
+     *
+     * @param callback
+     */
+    public void logout(BaseCallback<WanAndroidRespone<Object>> callback) {
+        HttpManager.getRetrofit(URLConfig.getInstance().getServerUrl())
+                .create(UserLoginService.class)
+                .logout()
+                .enqueue(callback);
+    }
 }
