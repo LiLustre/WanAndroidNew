@@ -35,16 +35,28 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Subscribe
     public void onLoginEvent(LoginEvent loginEvent) {
-        if (loginEvent!=null){
-            if (loginEvent.isLogin()){
+        if (loginEvent != null) {
+            if (loginEvent.isLogin()) {
                 onLogin(loginEvent);
-            }else {
-               onLogout(loginEvent);
+            } else {
+                onLogout(loginEvent);
             }
         }
     }
@@ -59,7 +71,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        EventBus.getDefault().unregister(this);
+
     }
 
     protected abstract int getLayoutId();
