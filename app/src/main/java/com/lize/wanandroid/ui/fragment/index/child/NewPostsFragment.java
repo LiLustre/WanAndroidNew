@@ -13,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.LazyBaseFragment;
 import com.lize.wanandroid.databinding.FragmentNewPostsBinding;
+import com.lize.wanandroid.event.LoginEvent;
 import com.lize.wanandroid.model.article.ArticleBean;
 import com.lize.wanandroid.ui.activity.WebViewActivity;
 import com.lize.wanandroid.ui.adapter.ArticleListAdapter;
@@ -33,9 +34,7 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
     private LoadmoreWrapper loadmoreWrapper;
 
     public static NewPostsFragment getInstance() {
-        if (instance == null) {
-            instance = new NewPostsFragment();
-        }
+        instance = new NewPostsFragment();
         return instance;
     }
 
@@ -65,7 +64,7 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
         newPostsViewModel.getArticleListLD().observe(this, new Observer<List<ArticleBean>>() {
             @Override
             public void onChanged(List<ArticleBean> articleBeans) {
-                Log.e("NewPostsFragment", "onChanged: " + "收到更新");
+
                 bindind.newPostsSrl.setRefreshing(false);
                 setupAdapter();
             }
@@ -75,7 +74,7 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
             public void onChanged(Boolean aBoolean) {
                 if (!aBoolean) {
                     bindind.newPostsSrl.setRefreshing(false);
-                    ToastUtil.show(getContext(),"数据加载失败");
+                    ToastUtil.show(getContext(), "数据加载失败");
                 }
             }
         });
@@ -116,6 +115,5 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
         }
 
     }
-
 
 }

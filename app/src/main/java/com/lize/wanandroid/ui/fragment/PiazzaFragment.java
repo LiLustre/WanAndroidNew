@@ -48,9 +48,9 @@ public class PiazzaFragment extends BaseFragment<FragmentPiazzaBinding> {
     }
 
     public static PiazzaFragment getInstance() {
-        if (instance == null) {
-            instance = new PiazzaFragment();
-        }
+
+        instance = new PiazzaFragment();
+
         return instance;
     }
 

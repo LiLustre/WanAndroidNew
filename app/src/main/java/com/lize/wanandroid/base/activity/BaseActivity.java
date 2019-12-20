@@ -31,7 +31,19 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         init(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, getLayoutId());
         initView(savedInstanceState);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     public abstract int getLayoutId();
@@ -40,7 +52,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
     }
 
-    @Subscribe
+    @Subscribe(sticky = true)
     public void onLoginEvent(LoginEvent loginEvent) {
         if (loginEvent != null) {
             if (loginEvent.isLogin()) {

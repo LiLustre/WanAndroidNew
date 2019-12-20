@@ -14,11 +14,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.activity.SettingActivity"></activity>
-        <activity android:name=".ui.activity.ToDoActivity" />
-        <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.activity.SearchActivity" />
-        <activity android:name=".ui.activity.WebViewActivity" />
-        <activity android:name=".ui.activity.ArticleClassifyActivity" />
+        <activity
+            android:name=".ui.activity.ToDoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.WebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ArticleClassifyActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.WelcomeActivity"
             android:screenOrientation="portrait">

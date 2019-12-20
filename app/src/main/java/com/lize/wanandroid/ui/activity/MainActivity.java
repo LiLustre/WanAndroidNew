@@ -3,6 +3,7 @@ package com.lize.wanandroid.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.activity.BaseActivity;
 import com.lize.wanandroid.databinding.ActivityMainBinding;
 import com.lize.wanandroid.domain.StartActivityForDomain;
+import com.lize.wanandroid.event.LoginEvent;
 import com.lize.wanandroid.ui.fragment.classify.ClassifyFragment;
 import com.lize.wanandroid.ui.fragment.MeFragment;
 import com.lize.wanandroid.ui.fragment.PiazzaFragment;
@@ -136,9 +138,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 break;
             case ME_SELECT_ITEM_POS:
                 if (meFragment == null) {
-
                     meFragment = MeFragment.getInstance();
-                    ft.add(R.id.content_fl, meFragment, IndexFragment.class.getName());
+                    ft.add(R.id.content_fl, meFragment, MeFragment.class.getName());
                 } else {
                     ft.show(meFragment);
                 }
@@ -155,7 +156,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         super.onSaveInstanceState(outState);
         outState.putInt(SELECT_ITEM_POS, selectedBottomPos);
     }
-
+    @Override
+    public void onLoginEvent(LoginEvent loginEvent) {
+        super.onLoginEvent(loginEvent);
+        Log.e("MainActivity", "onLoginEvent: MainActivity");
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        hideFragment(ft);
+        removeFragment(ft);
+        ft.commit();
+        showFragment(selectedBottomPos);
+    }
     private void hideFragment(FragmentTransaction ft) {
         // 如果不为空，就先隐藏起来
         if (indexFragment != null) {
@@ -169,6 +179,27 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         }
         if (meFragment != null) {
             ft.hide(meFragment);
+        }
+
+    }
+
+    private void removeFragment(FragmentTransaction ft) {
+        if (indexFragment != null) {
+            ft.remove(indexFragment);
+
+            indexFragment = null;
+        }
+        if (classifyFragment != null) {
+            ft.remove(classifyFragment);
+            classifyFragment = null;
+        }
+        if (piazzaFragment != null) {
+            ft.remove(piazzaFragment);
+            piazzaFragment = null;
+        }
+        if (meFragment != null) {
+            ft.hide(meFragment);
+            meFragment = null;
         }
     }
 

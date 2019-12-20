@@ -1,5 +1,7 @@
 package com.lize.wanandroid.ui.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -22,6 +24,7 @@ import com.lize.wanandroid.model.login.UserManager;
 import com.lize.wanandroid.model.user.UserInfo;
 import com.lize.wanandroid.ui.activity.LoginActivity;
 import com.lize.wanandroid.ui.activity.SettingActivity;
+import com.lize.wanandroid.util.ToastUtil;
 import com.lize.wanandroid.viewmodel.MeViewModel;
 
 /**
@@ -43,9 +46,7 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
     private static MeFragment instance = null;
 
     public static MeFragment getInstance() {
-        if (instance == null) {
-            instance = new MeFragment();
-        }
+        instance = new MeFragment();
         return instance;
     }
 
@@ -129,26 +130,42 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
             }
         });
         meViewModel.getUserInfo();
-
+        meViewModel.logoutSuccess.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                Log.e("MeFragment", "onChanged: MeFragment");
+                if (aBoolean) {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                    ToastUtil.show(getContext(), "退出成功");
+                } else {
+                    ToastUtil.show(getContext(), "退出登录失败");
+                }
+            }
+        });
         bindind.logoutRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                meViewModel.logout();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("确认是否退出登录");
+                builder.setTitle("退出登录");
+                builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        meViewModel.logout();
+                    }
+                });
+
+                builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.show();
+
             }
         });
-    }
-
-    @Override
-    public void onLogin(LoginEvent loginEvent) {
-        super.onLogin(loginEvent);
-        meViewModel.initData();
-        meViewModel.getUserInfo();
-    }
-
-    @Override
-    public void onLogout(LoginEvent loginEvent) {
-        super.onLogout(loginEvent);
-        meViewModel.initData();
     }
 
 }

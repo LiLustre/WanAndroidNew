@@ -47,7 +47,7 @@ public class LoginViewModel extends IBaseViewModel {
                             loginResultLiveData.setValue(user);
                             LoginEvent loginEvent = new LoginEvent();
                             loginEvent.setLogin(true);
-                            EventBus.getDefault().post(loginEvent);
+                            EventBus.getDefault().postSticky(loginEvent);
                         } else {
                             loginErrMsg.setValue(response.body().getErrorMsg());
                         }

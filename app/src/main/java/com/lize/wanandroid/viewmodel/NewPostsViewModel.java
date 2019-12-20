@@ -48,7 +48,7 @@ public class NewPostsViewModel extends IBaseViewModel {
                 @Override
                 public void onLoadSuccess(List<ArticleBean> articleBeans, int pageCount) {
                     loadResult.setValue(true);
-                    Log.e("NewPostsViewModel", "onChanged: " + "请求结束+getIndexArticle");
+
                     List<ArticleBean> articleListLDValue = articleListLD.getValue();
                     if (articleListLDValue == null) {
                         articleListLDValue = new ArrayList<>();
@@ -68,7 +68,6 @@ public class NewPostsViewModel extends IBaseViewModel {
                 @Override
                 public void onLoadError() {
                     loadResult.setValue(false);
-                    Log.e("NewPostsViewModel", "onChanged: " + "请求结束+onLoadError");
                 }
             });
 

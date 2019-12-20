@@ -37,9 +37,7 @@ public class IndexFragment extends BaseFragment<FragmentIndexBinding> {
     private List<Fragment> fragments;
 
     public static IndexFragment getInstance() {
-        if (instance == null) {
-            instance = new IndexFragment();
-        }
+        instance = new IndexFragment();
         return instance;
     }
 

@@ -46,9 +46,9 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
     private List<Fragment> fragments;
 
     public static ClassifyFragment getInstance() {
-        if (instance == null) {
+
             instance = new ClassifyFragment();
-        }
+
         return instance;
     }
 

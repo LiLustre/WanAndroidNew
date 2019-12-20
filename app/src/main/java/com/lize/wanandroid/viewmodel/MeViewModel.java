@@ -20,6 +20,7 @@ public class MeViewModel extends IBaseViewModel {
     public MutableLiveData<String> nickName = new MutableLiveData<>();
     public MutableLiveData<UserInfo> userInfo = new MutableLiveData<>();
     public MutableLiveData<Boolean> userLoginStatus = new MutableLiveData<>();
+    public MutableLiveData<Boolean> logoutSuccess = new MutableLiveData<>();
     private UserInfoModel userInfoModel;
     private UserLoginRequest userLoginRequest;
 
@@ -75,18 +76,19 @@ public class MeViewModel extends IBaseViewModel {
                     userLoginStatus.setValue(UserManager.getInstance().getLoginStatus());
                     LoginEvent loginEvent = new LoginEvent();
                     loginEvent.setLogin(false);
-                    EventBus.getDefault().post(loginEvent);
+                    logoutSuccess.setValue(true);
+                    EventBus.getDefault().postSticky(loginEvent);
                 }
             }
 
             @Override
             public void onFailed(Call<WanAndroidRespone<Object>> call, Response<WanAndroidRespone<Object>> response) {
-
+                logoutSuccess.setValue(false);
             }
 
             @Override
             public void onError(Call<WanAndroidRespone<Object>> call, Throwable error) {
-
+                logoutSuccess.setValue(false);
             }
         });
     }

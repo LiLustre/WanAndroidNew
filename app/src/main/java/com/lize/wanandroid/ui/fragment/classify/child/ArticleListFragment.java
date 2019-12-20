@@ -42,9 +42,7 @@ public class ArticleListFragment extends LazyBaseFragment<FragmentArticleListBin
     }
 
     public static ArticleListFragment getInstance() {
-        if (instance == null) {
-            instance = new ArticleListFragment();
-        }
+        instance = new ArticleListFragment();
         return instance;
     }
 

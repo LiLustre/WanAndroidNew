@@ -34,9 +34,7 @@ public class NewProjectsFragment extends LazyBaseFragment<FragmentNewProjectsBin
     private LoadmoreWrapper loadmoreWrapper;
 
     public static NewProjectsFragment getInstance() {
-        if (instance == null) {
-            instance = new NewProjectsFragment();
-        }
+        instance = new NewProjectsFragment();
         return instance;
     }
 
