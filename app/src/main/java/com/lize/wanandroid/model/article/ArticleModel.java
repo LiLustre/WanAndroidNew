@@ -170,4 +170,13 @@ public class ArticleModel {
 
         void onLoadError();
     }
+
+
+    public void likeArticle(String articleID, BaseCallback<WanAndroidRespone> responeBaseCallback) {
+        articleRequest.likeArticle(articleID, responeBaseCallback);
+    }
+
+    public void unLikeArticle(String articleID, BaseCallback<WanAndroidRespone> responeBaseCallback) {
+        articleRequest.cancleLikeArticle(articleID, responeBaseCallback);
+    }
 }

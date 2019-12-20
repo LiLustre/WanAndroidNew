@@ -64,15 +64,6 @@
                         android:textColor="@color/gray"
                         android:textSize="10dp" />
 
-                    <ImageButton
-                        android:id="@+id/more_ib"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:background="@null"
-                        android:src="@drawable/article_more_icon" />
                 </RelativeLayout>
 
                 <RelativeLayout

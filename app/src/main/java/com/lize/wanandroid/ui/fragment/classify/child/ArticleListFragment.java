@@ -103,10 +103,6 @@ public class ArticleListFragment extends LazyBaseFragment<FragmentArticleListBin
                     startActivity(intent);
                 }
 
-                @Override
-                public void onMoreClick(int pos) {
-
-                }
 
                 @Override
                 public void onCollectionClick(int pos) {

@@ -87,14 +87,6 @@ public class ArticleListAdapter extends DataBindingRecyclerAdapter {
         if (ValueUtil.isStringValid(articleBean.getAuthor())) {
             dataBinding.authorTv.setText("原创•" + articleBean.getAuthor());
         }
-        dataBinding.moreIb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ArticleListAdapter.this.onItemClickListener != null) {
-                    ArticleListAdapter.this.onItemClickListener.onMoreClick(position);
-                }
-            }
-        });
         if (ValueUtil.isStringValid(articleBean.getDesc())) {
             dataBinding.descTv.setVisibility(View.VISIBLE);
             dataBinding.descTv.setText(articleBean.getDesc());
@@ -130,7 +122,6 @@ public class ArticleListAdapter extends DataBindingRecyclerAdapter {
     public interface OnItemClickListener {
         void onItemClick(int pos);
 
-        void onMoreClick(int pos);
 
         void onCollectionClick(int pos);
     }

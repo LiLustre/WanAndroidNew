@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
@@ -32,6 +33,10 @@ public interface ArticleService {
     @GET("article/list/{page}/json")
     BaseCall<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> getArticleList(@Path("page") String page, @QueryMap Map<String,String> map);
 
+    @POST("lg/collect/{article}/json")
+    BaseCall<WanAndroidRespone> likeArticle(@Path("article") String articleID);
 
-    
+    @POST("lg/uncollect_originId/{article}/json")
+    BaseCall<WanAndroidRespone> cancleLikeArticle(@Path("article") String articleID);
+
 }

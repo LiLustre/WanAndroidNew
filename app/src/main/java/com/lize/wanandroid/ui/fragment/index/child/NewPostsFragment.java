@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.LazyBaseFragment;
 import com.lize.wanandroid.databinding.FragmentNewPostsBinding;
@@ -78,6 +79,28 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
                 }
             }
         });
+        newPostsViewModel.unliekReq.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    Snackbar.make(getActivity().getWindow().getDecorView(), "取消收藏成功☺", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Snackbar.make(getActivity().getWindow().getDecorView(), "取消收藏失败o(╥﹏╥)o", Snackbar.LENGTH_SHORT).show();
+                }
+                setupAdapter();
+            }
+        });
+        newPostsViewModel.liekReq.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    Snackbar.make(getActivity().getWindow().getDecorView(), "收藏成功☺", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Snackbar.make(getActivity().getWindow().getDecorView(), "收藏失败o(╥﹏╥)o", Snackbar.LENGTH_SHORT).show();
+                }
+                setupAdapter();
+            }
+        });
     }
 
     private void setupAdapter() {
@@ -92,13 +115,8 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
                 }
 
                 @Override
-                public void onMoreClick(int pos) {
-
-                }
-
-                @Override
                 public void onCollectionClick(int pos) {
-
+                    newPostsViewModel.likeArticle(String.valueOf(newPostsViewModel.getArticleListLD().getValue().get(pos).getId()), pos);
                 }
             });
             bindind.newPostsRv.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));

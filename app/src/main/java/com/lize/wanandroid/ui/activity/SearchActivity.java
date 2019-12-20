@@ -140,10 +140,6 @@ public class SearchActivity extends BaseActivity<ActivitySearchBinding> {
 
                     }
 
-                    @Override
-                    public void onMoreClick(int pos) {
-
-                    }
 
                     @Override
                     public void onCollectionClick(int pos) {

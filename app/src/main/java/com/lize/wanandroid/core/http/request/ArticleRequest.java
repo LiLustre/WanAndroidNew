@@ -3,6 +3,7 @@ package com.lize.wanandroid.core.http.request;
 import com.lize.wanandroid.config.URLConfig;
 import com.lize.wanandroid.core.http.WanAndroidPageData;
 import com.lize.wanandroid.core.http.WanAndroidRespone;
+import com.lize.wanandroid.core.http.retrofit.BaseCall;
 import com.lize.wanandroid.core.http.retrofit.callback.BaseCallback;
 import com.lize.wanandroid.core.http.retrofit.HttpManager;
 import com.lize.wanandroid.core.http.service.ArticleService;
@@ -79,6 +80,33 @@ public class ArticleRequest {
                 .getArticleList(page, map)
                 .enqueue(responeCallBack);
 
+    }
+
+
+    /**
+     * 收藏文章
+     *
+     * @param articleID
+     * @param responeBaseCallback
+     */
+    public void likeArticle(String articleID, BaseCallback<WanAndroidRespone> responeBaseCallback) {
+        HttpManager.getRetrofit(URLConfig.getInstance().getServerUrl())
+                .create(ArticleService.class)
+                .likeArticle(articleID)
+                .enqueue(responeBaseCallback);
+    }
+
+    /**
+     * 收藏文章
+     *
+     * @param articleID
+     * @param responeBaseCallback
+     */
+    public void cancleLikeArticle(String articleID, BaseCallback<WanAndroidRespone> responeBaseCallback) {
+        HttpManager.getRetrofit(URLConfig.getInstance().getServerUrl())
+                .create(ArticleService.class)
+                .cancleLikeArticle(articleID)
+                .enqueue(responeBaseCallback);
     }
 
 }

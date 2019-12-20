@@ -2,7 +2,6 @@ package com.lize.wanandroid.ui.fragment.classify;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -11,18 +10,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.google.android.material.tabs.TabLayout;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.BaseFragment;
 import com.lize.wanandroid.databinding.FragmentClassifyBinding;
-import com.lize.wanandroid.domain.StartActivityForDomain;
 import com.lize.wanandroid.model.classify.ArticleClassify;
-import com.lize.wanandroid.ui.activity.ArticleClassifyActivity;
 import com.lize.wanandroid.ui.adapter.SecondaryArticleClassifyAdapter;
 import com.lize.wanandroid.ui.adapter.base.FragmentAdapter;
 import com.lize.wanandroid.ui.fragment.classify.child.ArticleListFragment;
 import com.lize.wanandroid.ui.widget.dialog.SelectClassifyDialog;
-import com.lize.wanandroid.util.ValueUtil;
 import com.lize.wanandroid.viewmodel.ArtcileClassifyViewModel;
 
 import java.util.ArrayList;
@@ -75,6 +70,7 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
 
             }
         });
+
     }
 
     /**

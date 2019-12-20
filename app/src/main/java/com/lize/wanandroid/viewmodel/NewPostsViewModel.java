@@ -4,11 +4,17 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.lize.wanandroid.core.http.WanAndroidRespone;
+import com.lize.wanandroid.core.http.error.ErrorCode;
+import com.lize.wanandroid.core.http.retrofit.callback.BaseCallback;
 import com.lize.wanandroid.model.article.ArticleBean;
 import com.lize.wanandroid.model.article.ArticleModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * @author Lize
@@ -16,6 +22,8 @@ import java.util.List;
  */
 public class NewPostsViewModel extends IBaseViewModel {
 
+    public MutableLiveData<Boolean> liekReq = new MutableLiveData<>();
+    public MutableLiveData<Boolean> unliekReq = new MutableLiveData<>();
     private MutableLiveData<List<ArticleBean>> articleListLD = new MutableLiveData<>();
     public MutableLiveData<Boolean> loadResult = new MutableLiveData<>();
     private ArticleModel articleModel;
@@ -76,5 +84,53 @@ public class NewPostsViewModel extends IBaseViewModel {
         }
     }
 
+    public void likeArticle(String articleID, final int pos) {
+        List<ArticleBean> articleListLDValue = articleListLD.getValue();
+
+        if (articleListLDValue.get(pos).isCollect()){
+            articleModel.unLikeArticle(articleID, new BaseCallback<WanAndroidRespone>() {
+                @Override
+                public void onSuccess(Call<WanAndroidRespone> call, Response<WanAndroidRespone> response) {
+                    if (response.body().getErrorCode() == ErrorCode.ERROR_CODE_OK) {
+                        unliekReq.setValue(Boolean.TRUE);
+                        List<ArticleBean> articleListLDValue = articleListLD.getValue();
+                        articleListLDValue.get(pos).setCollect(false);
+                    }
+                }
+
+                @Override
+                public void onFailed(Call<WanAndroidRespone> call, Response<WanAndroidRespone> response) {
+                    unliekReq.setValue(false);
+                }
+
+                @Override
+                public void onError(Call<WanAndroidRespone> call, Throwable error) {
+                    unliekReq.setValue(false);
+                }
+            });
+        }else {
+            articleModel.likeArticle(articleID, new BaseCallback<WanAndroidRespone>() {
+                @Override
+                public void onSuccess(Call<WanAndroidRespone> call, Response<WanAndroidRespone> response) {
+                    if (response.body().getErrorCode() == ErrorCode.ERROR_CODE_OK) {
+                        liekReq.setValue(Boolean.TRUE);
+                        List<ArticleBean> articleListLDValue = articleListLD.getValue();
+                        articleListLDValue.get(pos).setCollect(true);
+                    }
+                }
+
+                @Override
+                public void onFailed(Call<WanAndroidRespone> call, Response<WanAndroidRespone> response) {
+                    liekReq.setValue(false);
+                }
+
+                @Override
+                public void onError(Call<WanAndroidRespone> call, Throwable error) {
+                    liekReq.setValue(false);
+                }
+            });
+        }
+
+    }
 
 }
