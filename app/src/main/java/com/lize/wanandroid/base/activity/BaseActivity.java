@@ -10,8 +10,12 @@ import androidx.databinding.ViewDataBinding;
 
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.BaseApplication;
+import com.lize.wanandroid.event.LoginEvent;
 import com.lize.wanandroid.model.search.DaoSession;
 import com.lize.wanandroid.util.statusbar.StatusBarCompat;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * @author Lize
@@ -27,12 +31,31 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         init(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, getLayoutId());
         initView(savedInstanceState);
+        EventBus.getDefault().register(this);
     }
 
     public abstract int getLayoutId();
 
     public void init(@Nullable Bundle savedInstanceState) {
 
+    }
+
+    @Subscribe
+    public void onLoginEvent(LoginEvent loginEvent) {
+        if (loginEvent != null) {
+            if (loginEvent.isLogin()) {
+                onLogin(loginEvent);
+            } else {
+                onLogout(loginEvent);
+            }
+        }
+    }
+
+    private void onLogout(LoginEvent loginEvent) {
+
+    }
+
+    private void onLogin(LoginEvent loginEvent) {
     }
 
     protected abstract void initView(@Nullable Bundle savedInstanceState);
@@ -63,4 +86,9 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         return ((BaseApplication) getApplication()).getDaoSession();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

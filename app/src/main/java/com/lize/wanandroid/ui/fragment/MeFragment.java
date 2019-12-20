@@ -17,6 +17,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.lize.wanandroid.R;
 import com.lize.wanandroid.base.fragment.BaseFragment;
 import com.lize.wanandroid.databinding.FragmentMeBinding;
+import com.lize.wanandroid.event.LoginEvent;
 import com.lize.wanandroid.model.login.UserManager;
 import com.lize.wanandroid.model.user.UserInfo;
 import com.lize.wanandroid.ui.activity.LoginActivity;
@@ -121,6 +122,9 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
                 if (userInfo != null) {
                     bindind.rankingTv.setText(String.valueOf(userInfo.getRank()));
                     bindind.totalGradeTv.setText(String.valueOf(userInfo.getCoinCount()));
+                } else {
+                    bindind.rankingTv.setText("--");
+                    bindind.totalGradeTv.setText("--");
                 }
             }
         });
@@ -134,5 +138,17 @@ public class MeFragment extends BaseFragment<FragmentMeBinding> {
         });
     }
 
+    @Override
+    public void onLogin(LoginEvent loginEvent) {
+        super.onLogin(loginEvent);
+        meViewModel.initData();
+        meViewModel.getUserInfo();
+    }
+
+    @Override
+    public void onLogout(LoginEvent loginEvent) {
+        super.onLogout(loginEvent);
+        meViewModel.initData();
+    }
 
 }

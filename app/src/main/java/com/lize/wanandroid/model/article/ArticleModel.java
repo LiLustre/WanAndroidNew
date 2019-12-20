@@ -32,6 +32,7 @@ public class ArticleModel {
 
 
     public void getIndexArticle(int page, final OnIndexArticltLoadListener onIndexArticltLoadListener) {
+        isRequestArticleListError.set(false);
         if (page == 0) {
             indexArticleRequestFinsihFlag.set(2);
             getToptList(new BaseCallback<WanAndroidRespone<List<ArticleBean>>>() {
@@ -39,7 +40,6 @@ public class ArticleModel {
                 public void onSuccess(Call<WanAndroidRespone<List<ArticleBean>>> call, Response<WanAndroidRespone<List<ArticleBean>>> response) {
                     if (response.body() != null && response.body().getErrorCode() == ErrorCode.ERROR_CODE_OK) {
                         topArticle = new ArrayList<>();
-
                         topArticle.addAll(response.body().getData());
                         if (indexArticleRequestFinsihFlag.get() > 0) {
                             onRequestInitDataFinish(onIndexArticltLoadListener);
@@ -156,13 +156,13 @@ public class ArticleModel {
         articleRequest.getTopArticleList(baseResponeCallBack);
     }
 
-    public void getProjectList(String page,BaseCallback<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> baseResponeCallBack) {
-        articleRequest.getProjectList(page,baseResponeCallBack);
+    public void getProjectList(String page, BaseCallback<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> baseResponeCallBack) {
+        articleRequest.getProjectList(page, baseResponeCallBack);
     }
 
 
-    public void getArticleList(String page,String cid,BaseCallback<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> baseResponeCallBack){
-        articleRequest.getArticleList(page,cid,baseResponeCallBack);
+    public void getArticleList(String page, String cid, BaseCallback<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> baseResponeCallBack) {
+        articleRequest.getArticleList(page, cid, baseResponeCallBack);
     }
 
     public interface OnIndexArticltLoadListener {

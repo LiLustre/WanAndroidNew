@@ -6,9 +6,12 @@ import com.lize.wanandroid.core.http.WanAndroidRespone;
 import com.lize.wanandroid.core.http.error.ErrorCode;
 import com.lize.wanandroid.core.http.request.UserLoginRequest;
 import com.lize.wanandroid.core.http.retrofit.callback.BaseCallback;
+import com.lize.wanandroid.event.LoginEvent;
 import com.lize.wanandroid.model.login.UserManager;
 import com.lize.wanandroid.model.user.UserInfo;
 import com.lize.wanandroid.model.user.UserInfoModel;
+
+import org.greenrobot.eventbus.EventBus;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -23,6 +26,10 @@ public class MeViewModel extends IBaseViewModel {
     public MeViewModel() {
         userInfoModel = new UserInfoModel();
         userLoginRequest = new UserLoginRequest();
+        initData();
+    }
+
+    public void initData() {
         userLoginStatus.setValue(UserManager.getInstance().getLoginStatus());
         if (UserManager.getInstance().getLoginStatus()) {
             if (UserManager.getInstance().getUser() != null) {
@@ -31,6 +38,7 @@ public class MeViewModel extends IBaseViewModel {
             }
         } else {
             nickName.setValue("点击登录");
+            userInfo.setValue(null);
         }
     }
 
@@ -65,6 +73,9 @@ public class MeViewModel extends IBaseViewModel {
                 if (response.body().getErrorCode() == ErrorCode.ERROR_CODE_OK) {
                     UserManager.getInstance().logout();
                     userLoginStatus.setValue(UserManager.getInstance().getLoginStatus());
+                    LoginEvent loginEvent = new LoginEvent();
+                    loginEvent.setLogin(false);
+                    EventBus.getDefault().post(loginEvent);
                 }
             }
 

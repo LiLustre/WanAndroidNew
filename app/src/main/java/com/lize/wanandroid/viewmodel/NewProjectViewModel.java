@@ -4,10 +4,12 @@ import android.util.Log;
 
 import com.lize.wanandroid.core.http.WanAndroidPageData;
 import com.lize.wanandroid.core.http.WanAndroidRespone;
+import com.lize.wanandroid.core.http.error.HttpResErrorPaser;
 import com.lize.wanandroid.core.http.retrofit.callback.BaseCallback;
 import com.lize.wanandroid.model.article.ArticleBean;
 import com.lize.wanandroid.model.article.ArticleModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ import retrofit2.Response;
 public class NewProjectViewModel extends IBaseViewModel {
 
     private MutableLiveData<List<ArticleBean>> articleListLD = new MutableLiveData<>();
+    public MutableLiveData<String> loadErrMsg = new MutableLiveData<>();
     private ArticleModel articleModel;
     private MutableLiveData<Integer> curPage = new MutableLiveData<>();
     private int pageCount;
@@ -69,12 +72,18 @@ public class NewProjectViewModel extends IBaseViewModel {
 
                 @Override
                 public void onError(Call<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> call, Throwable error) {
+                    loadErrMsg.setValue(HttpResErrorPaser.parseResException(error));
                     Log.e("getProjectList", "onFailed: " + error.getMessage());
                 }
 
                 @Override
                 public void onFailed(Call<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> call, Response<WanAndroidRespone<WanAndroidPageData<ArticleBean>>> response) {
                     Log.e("getProjectList", "onFailed: " + response.body().getErrorMsg());
+                    try {
+                        loadErrMsg.setValue(HttpResErrorPaser.parseResError(response.code(),response.errorBody().string()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
 

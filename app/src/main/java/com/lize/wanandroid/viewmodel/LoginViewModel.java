@@ -6,8 +6,11 @@ import com.lize.wanandroid.core.http.WanAndroidRespone;
 import com.lize.wanandroid.core.http.error.HttpResErrorPaser;
 import com.lize.wanandroid.core.http.request.UserLoginRequest;
 import com.lize.wanandroid.core.http.retrofit.callback.BaseCallback;
+import com.lize.wanandroid.event.LoginEvent;
 import com.lize.wanandroid.model.login.User;
 import com.lize.wanandroid.model.login.UserManager;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 
@@ -16,8 +19,6 @@ import retrofit2.Response;
 
 public class LoginViewModel extends IBaseViewModel {
     private UserLoginRequest loginRequest;
-
-
     public MutableLiveData<User> loginResultLiveData = new MutableLiveData<User>();
     public MutableLiveData<String> loginErrMsg = new MutableLiveData<String>();
     public MutableLiveData<String> account = new MutableLiveData<String>();
@@ -44,6 +45,9 @@ public class LoginViewModel extends IBaseViewModel {
                                 UserManager.getInstance().saveUser(user);
                             }
                             loginResultLiveData.setValue(user);
+                            LoginEvent loginEvent = new LoginEvent();
+                            loginEvent.setLogin(true);
+                            EventBus.getDefault().post(loginEvent);
                         } else {
                             loginErrMsg.setValue(response.body().getErrorMsg());
                         }

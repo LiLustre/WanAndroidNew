@@ -11,6 +11,7 @@ import com.lize.wanandroid.ui.activity.WebViewActivity;
 import com.lize.wanandroid.ui.adapter.ArticleListAdapter;
 import com.lize.wanandroid.ui.adapter.ProjectListAdapter;
 import com.lize.wanandroid.ui.widget.recycler.loadmore.wrapper.LoadmoreWrapper;
+import com.lize.wanandroid.util.ToastUtil;
 import com.lize.wanandroid.viewmodel.NewPostsViewModel;
 import com.lize.wanandroid.viewmodel.NewProjectViewModel;
 
@@ -67,6 +68,13 @@ public class NewProjectsFragment extends LazyBaseFragment<FragmentNewProjectsBin
             public void onChanged(List<ArticleBean> articleBeans) {
                 bindind.newProjectSrl.setRefreshing(false);
                 setupAdapter();
+            }
+        });
+        newProjectViewModel.loadErrMsg.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                bindind.newProjectSrl.setRefreshing(false);
+                ToastUtil.show(getContext(), s);
             }
         });
     }

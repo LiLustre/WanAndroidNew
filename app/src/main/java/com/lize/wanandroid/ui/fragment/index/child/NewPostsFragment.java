@@ -2,6 +2,7 @@ package com.lize.wanandroid.ui.fragment.index.child;
 
 
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -16,6 +17,7 @@ import com.lize.wanandroid.model.article.ArticleBean;
 import com.lize.wanandroid.ui.activity.WebViewActivity;
 import com.lize.wanandroid.ui.adapter.ArticleListAdapter;
 import com.lize.wanandroid.ui.widget.recycler.loadmore.wrapper.LoadmoreWrapper;
+import com.lize.wanandroid.util.ToastUtil;
 import com.lize.wanandroid.viewmodel.NewPostsViewModel;
 
 import java.util.List;
@@ -63,8 +65,18 @@ public class NewPostsFragment extends LazyBaseFragment<FragmentNewPostsBinding> 
         newPostsViewModel.getArticleListLD().observe(this, new Observer<List<ArticleBean>>() {
             @Override
             public void onChanged(List<ArticleBean> articleBeans) {
+                Log.e("NewPostsFragment", "onChanged: " + "收到更新");
                 bindind.newPostsSrl.setRefreshing(false);
                 setupAdapter();
+            }
+        });
+        newPostsViewModel.loadResult.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (!aBoolean) {
+                    bindind.newPostsSrl.setRefreshing(false);
+                    ToastUtil.show(getContext(),"数据加载失败");
+                }
             }
         });
     }

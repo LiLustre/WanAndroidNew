@@ -6,6 +6,11 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 
+import com.lize.wanandroid.event.LoginEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 /**
  * @author Lize
  * on 2019/10/15
@@ -97,5 +102,22 @@ public abstract class LazyBaseFragment<T extends ViewDataBinding> extends BaseFr
     public void onDestroy() {
         super.onDestroy();
         initVariable();
+    }
+
+    @Subscribe
+    public void onLoginEvent(LoginEvent loginEvent) {
+        if (loginEvent != null) {
+            if (loginEvent.isLogin()) {
+                onLogin(loginEvent);
+            } else {
+                onLogout(loginEvent);
+            }
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
     }
 }

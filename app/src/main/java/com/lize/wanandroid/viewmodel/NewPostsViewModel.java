@@ -1,5 +1,7 @@
 package com.lize.wanandroid.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.lize.wanandroid.model.article.ArticleBean;
@@ -15,6 +17,7 @@ import java.util.List;
 public class NewPostsViewModel extends IBaseViewModel {
 
     private MutableLiveData<List<ArticleBean>> articleListLD = new MutableLiveData<>();
+    public MutableLiveData<Boolean> loadResult = new MutableLiveData<>();
     private ArticleModel articleModel;
     private MutableLiveData<Integer> curPage = new MutableLiveData<>();
     private int pageCount;
@@ -44,6 +47,8 @@ public class NewPostsViewModel extends IBaseViewModel {
             articleModel.getIndexArticle(curPage.getValue(), new ArticleModel.OnIndexArticltLoadListener() {
                 @Override
                 public void onLoadSuccess(List<ArticleBean> articleBeans, int pageCount) {
+                    loadResult.setValue(true);
+                    Log.e("NewPostsViewModel", "onChanged: " + "请求结束+getIndexArticle");
                     List<ArticleBean> articleListLDValue = articleListLD.getValue();
                     if (articleListLDValue == null) {
                         articleListLDValue = new ArrayList<>();
@@ -62,7 +67,8 @@ public class NewPostsViewModel extends IBaseViewModel {
 
                 @Override
                 public void onLoadError() {
-
+                    loadResult.setValue(false);
+                    Log.e("NewPostsViewModel", "onChanged: " + "请求结束+onLoadError");
                 }
             });
 
